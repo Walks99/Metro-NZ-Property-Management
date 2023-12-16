@@ -1,0 +1,12 @@
+### Test root endpoint
+GET http://localhost:4000/
+### Retrieve all documents from the 'documents' collection of the 'datarecords' database
+GET http://localhost:4000/api/retrievedocument
+
+### Post a document to the 'documents' collection of the 'datarecors' database
+POST http://localhost:4000/api/senddocument
+Content-Type: application/json
+
+{ 
+    "message": "Hello Yoda"
+}

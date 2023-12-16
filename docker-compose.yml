@@ -1,0 +1,49 @@
+version: '3.9'
+
+services:
+  # ReactJS frontend
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:80
+    stdin_open: true
+    volumes:
+      - ./frontend:/user/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - backend
+
+  # Node.js API service
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:3000"
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017
+      DB_NAME: datarecords
+      NAME: dawg
+    depends_on:
+      - mongo_db
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+  # MongoDB service
+
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    ports:
+      - "2717:27017"
+    volumes:
+      - mongo_db:/data/db
+
+
+
+volumes:
+  mongo_db: {}
