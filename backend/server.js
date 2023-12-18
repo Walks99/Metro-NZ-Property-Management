@@ -32,7 +32,17 @@ app.use(cors({ origin: "*", credentials: true }));
 
 // Define Mongoose schema and model for the 'documents' collection
 const documentSchema = new mongoose.Schema({
-  message: String,
+  title: String,
+  description: String,
+  images: String,
+  bedrooms: Number,
+  bathrooms: Number,
+  carparks: Number,
+  pets: Boolean,
+  country: String,
+  city: String,
+  suburb: String,
+  streetNumber: Number
 });
 
 const Document = mongoose.model("Document", documentSchema);
