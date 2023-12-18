@@ -28,21 +28,24 @@ function App() {
    };
    
 
-    if (listingDetails) {
-      // Extract the input value and create a data object
-      const listingData = {
-        listingTitle: listingTitle.value,
-        listingDescription: pathToImages.value,
-        pathToImages: numberOfBedrooms.value,
-        numberOfBedrooms: numberOfBathrooms.value,
-        numberOfBathrooms: numberOfCarparks.value,
-        numberOfCarparks: petsAllowed.value,
-        petsAllowed: country.value,
-        country: suburb.value,
-        suburb: street.value,
-        street: streetNumber.value,
-        streetNumber: streetNumber.value,
-      };
+   if (listingDetails) {
+    // Extract the input value and create a data object
+    const listingData = {
+      listingTitle: listingDetails.listingTitle.value,
+      listingDescription: listingDetails.listingDescription.value,
+      pathToImages: listingDetails.pathToImages.value,
+      numberOfBedrooms: listingDetails.numberOfBedrooms.value,
+      numberOfBathrooms: listingDetails.numberOfBathrooms.value,
+      numberOfCarparks: listingDetails.numberOfCarparks.value,
+      petsAllowed: listingDetails.petsAllowed.value,
+      country: listingDetails.country.value,
+      city: listingDetails.city.value,
+      suburb: listingDetails.suburb.value,
+      street: listingDetails.street.value,
+      streetNumber: listingDetails.streetNumber.value,
+    };
+   }
+   
 
       // Convert the data object to JSON
       const jsonListingData = JSON.stringify(listingData);
