@@ -12,28 +12,40 @@ function App() {
     e.preventDefault();
 
     // Retrieve the input element by its ID
-    const listingTitle = document.getElementById("listingTitle");
-    const listingDescription = document.getElementById("listingDescription");
-    const pathToImage = document.getElementById("pathToImage");
-    const numberOfBedrooms = document.getElementById("numberOfBedrooms");
-    const numberOfBathrooms = document.getElementById("numberOfBathrooms");
-    const numberOfCarparks = document.getElementById("numberOfCarparks");
-    const petsAllowed = document.getElementById("petsAllowed");
-    const country = document.getElementById("country");
-    const city = document.getElementById("city");
-    const suburb = document.getElementById("suburb");
-    const street = document.getElementById("street");
-    const streetNumber = document.getElementById("streetNumber");
+    const listingDetails = {
+      listingTitle: document.getElementById("listingTitle"),
+      listingDescription: document.getElementById("listingDescription"),
+      pathToImages: document.getElementById("pathToImage"),
+      numberOfBedrooms: document.getElementById("numberOfBedrooms"),
+      numberOfBathrooms: document.getElementById("numberOfBathrooms"),
+      numberOfCarparks: document.getElementById("numberOfCarparks"),
+      petsAllowed: document.getElementById("petsAllowed"),
+      country: document.getElementById("country"),
+      city: document.getElementById("city"),
+      suburb: document.getElementById("suburb"),
+      street: document.getElementById("street"),
+      streetNumber: document.getElementById("streetNumber")
+   };
+   
 
-
-    if (inputElement) {
+    if (listingDetails) {
       // Extract the input value and create a data object
-      const inputData = {
-        message: inputElement.value,
+      const listingData = {
+        listingTitle: listingTitle.value,
+        listingDescription: pathToImages.value,
+        pathToImages: numberOfBedrooms.value,
+        numberOfBedrooms: numberOfBathrooms.value,
+        numberOfBathrooms: numberOfCarparks.value,
+        numberOfCarparks: petsAllowed.value,
+        petsAllowed: country.value,
+        country: suburb.value,
+        suburb: street.value,
+        street: streetNumber.value,
+        streetNumber: streetNumber.value,
       };
 
       // Convert the data object to JSON
-      const jsonInputData = JSON.stringify(inputData);
+      const jsonListingData = JSON.stringify(listingData);
 
       try {
         // Send a POST request to the server endpoint for uploading documents
@@ -42,7 +54,7 @@ function App() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: jsonInputData,
+          body: jsonListingData,
         });
 
         // Check if the response is successful (status code in the range 200-299)
@@ -141,7 +153,7 @@ function App() {
         <label htmlFor="imageUpload">Listing Description </label>
         <input type="text" id="listingDescripton" name="listingDescripton" /><br/>
         <label htmlFor="imageUpload">Path to image </label>
-        <input type="text" id="pathToImage" name="pathToImage" /><br/>
+        <input type="text" id="pathToImages" name="pathToImage" /><br/>
         <label htmlFor="imageUpload">Number of bedrooms </label>
         <input type="text" id="numberOfBedrooms" name="numberOfBedrooms" /><br/>
         <label htmlFor="imageUpload">Number of bathrooms </label>
