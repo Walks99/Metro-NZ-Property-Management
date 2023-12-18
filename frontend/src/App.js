@@ -12,7 +12,19 @@ function App() {
     e.preventDefault();
 
     // Retrieve the input element by its ID
-    const inputElement = document.getElementById("textcontent");
+    const listingTitle = document.getElementById("listingTitle");
+    const listingDescription = document.getElementById("listingDescription");
+    const pathToImage = document.getElementById("pathToImage");
+    const numberOfBedrooms = document.getElementById("numberOfBedrooms");
+    const numberOfBathrooms = document.getElementById("numberOfBathrooms");
+    const numberOfCarparks = document.getElementById("numberOfCarparks");
+    const petsAllowed = document.getElementById("petsAllowed");
+    const country = document.getElementById("country");
+    const city = document.getElementById("city");
+    const suburb = document.getElementById("suburb");
+    const street = document.getElementById("street");
+    const streetNumber = document.getElementById("streetNumber");
+
 
     if (inputElement) {
       // Extract the input value and create a data object
@@ -124,8 +136,28 @@ function App() {
       {/* Upload document form */}
       <h1>Upload document to the database</h1>
       <form onSubmit={makeHttpRequest}>
-        <label htmlFor="imageUpload">Enter text here </label>
-        <input type="text" id="textcontent" name="textcontent" />
+        <label htmlFor="imageUpload">Listing title </label>
+        <input type="text" id="listingTitle" name="listingTitle" /><br/>
+        <label htmlFor="imageUpload">Listing Description </label>
+        <input type="text" id="listingDescripton" name="listingDescripton" /><br/>
+        <label htmlFor="imageUpload">Path to image </label>
+        <input type="text" id="pathToImage" name="pathToImage" /><br/>
+        <label htmlFor="imageUpload">Number of bedrooms </label>
+        <input type="text" id="numberOfBedrooms" name="numberOfBedrooms" /><br/>
+        <label htmlFor="imageUpload">Number of bathrooms </label>
+        <input type="text" id="numberOfBathrooms" name="numberOfBathrooms" /><br/>
+        <label htmlFor="imageUpload">Number of carparks </label>
+        <input type="text" id="numberOfCarparks" name="numberOfCarparks" /><br/>
+        <label htmlFor="imageUpload">Pets allowed? (Yes/No) </label>
+        <input type="text" id="petsAllowed" name="petsAllowed" /><br/>
+        <label htmlFor="imageUpload">Country </label>
+        <input type="text" id="country" name="country" /><br/>
+        <label htmlFor="imageUpload">Town/City </label>
+        <input type="text" id="city" name="city" /><br/>
+        <label htmlFor="imageUpload">Suburb </label>
+        <input type="text" id="suburb" name="suburb" /><br/>
+        <label htmlFor="imageUpload">Street Number </label>
+        <input type="text" id="streetNumber" name="streetNumber" /><br/>
         <button type="submit">Upload</button>
       </form>
       {successMessage && <p>{successMessage}</p>}
