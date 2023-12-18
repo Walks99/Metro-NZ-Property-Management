@@ -19,10 +19,7 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 // Connect to Database
 // mongoose.connect("mongodb://localhost:27017/datarecords", { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(`${MONGODB_URI}/${DB_NAME}`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(`${MONGODB_URI}/${DB_NAME}`);
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // ------------------------------------------ CREATE INSTANCE OF EXPRESS APP -----------------------------------------
 const app = express();
