@@ -30,7 +30,6 @@ app.use(cors({ origin: "*", credentials: true }));
 const documentSchema = new mongoose.Schema({
   listingTitle: String,
   listingDescription: String,
-  pathToImages: String,
   propertyType: String,
   bedrooms: Number,
   bathrooms: Number,
