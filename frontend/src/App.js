@@ -15,7 +15,6 @@ function App() {
     const listingDetails = {
       listingTitle: document.getElementById("listingTitle"),
       listingDescription: document.getElementById("listingDescription"),
-      pathToImages: document.getElementById("pathToImages"),
       propertyType: document.getElementById("propertyType"),
       bedrooms: document.getElementById("bedrooms"),
       bathrooms: document.getElementById("bathrooms"),
@@ -34,7 +33,6 @@ function App() {
       const listingData = {
         listingTitle: listingDetails.listingTitle.value,
         listingDescription: listingDetails.listingDescription.value,
-        pathToImages: listingDetails.pathToImages.value,
         propertyType: listingDetails.propertyType.value,
         bedrooms: listingDetails.bedrooms.value,
         bathrooms: listingDetails.bathrooms.value,
@@ -69,7 +67,6 @@ function App() {
           // inputElement.value = "";
           listingDetails.listingTitle.value = "";
           listingDetails.listingDescription.value = "";
-          listingDetails.pathToImages.value = "";
           listingDetails.propertyType.value = "";
           listingDetails.bedrooms.value = "";
           listingDetails.bathrooms.value = "";
@@ -174,9 +171,6 @@ function App() {
         <label htmlFor="listingDescription">Listing Description: </label>
         <input type="text" id="listingDescription" name="listingDescription" />
         <br />
-        <label htmlFor="pathToImages">Path to image: </label>
-        <input type="text" id="pathToImages" name="pathToImage" />
-        <br />
         <label htmlFor="propertyType">Property Type: </label>
         <select id="propertyType" name="propertyType">
           <option value="NoAnswerSelected">--Select type--</option>
@@ -269,9 +263,6 @@ function App() {
                     <b>Listing Description:</b>
                     {JSON.stringify(document.listingDescription)}
                     <br />
-                    <b>Path to images:</b>
-                    {JSON.stringify(document.pathToImages)}
-                    <br />
                     <b>Property Type:</b>
                     {JSON.stringify(document.propertyType)}
                     <br />
@@ -322,6 +313,9 @@ function App() {
           )}
         </div>
       )}
+
+{/* <img src={process.env.PUBLIC_URL + '/images/1-emerald-street-epsom-auckland/2086972497.jpg'} alt="House" /> */}
+
     </>
   );
 }
