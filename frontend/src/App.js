@@ -192,8 +192,8 @@ function App() {
         <label htmlFor="petsAllowed">Pets allowed?: </label>
         <select id="petsAllowed" name="petsAllowed">
           <option value="NoAnswerSelected">--Select Yes/No--</option>
-          <option value="Yes">Yes</option>
-          <option value="No">No </option>
+          <option value="true">Yes</option>
+          <option value="false">No </option>
         </select>
         <br />
         <label htmlFor="country">Country: </label>
