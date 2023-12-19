@@ -18,7 +18,6 @@ const mongoose = require("mongoose");
 // Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
 // Connect to Database
-// mongoose.connect("mongodb://localhost:27017/datarecords", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect(`${MONGODB_URI}/${DB_NAME}`);
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // ------------------------------------------ CREATE INSTANCE OF EXPRESS APP -----------------------------------------
@@ -29,20 +28,21 @@ app.use(cors({ origin: "*", credentials: true }));
 
 // Define Mongoose schema and model for the 'documents' collection
 const documentSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  images: String,
+  listingTitle: String,
+  listingDescription: String,
+  pathToImages: String,
   bedrooms: Number,
   bathrooms: Number,
   carparks: Number,
-  pets: Boolean,
+  petsAllowed: Boolean,
   country: String,
   city: String,
   suburb: String,
+  street: String,
   streetNumber: Number
 });
 
-const Document = mongoose.model("Document", documentSchema);
+const Document = mongoose.model("Document", documentSchema, "Listings");
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // ----------------------------------------- ENDPOINT - ROOT TEST ----------------------------------------------------
 app.get("/", async (req, res) => {
@@ -82,7 +82,7 @@ app.get("/api/retrievedocument", async (req, res) => {
   try {
     // Query the database to retrieve a document
     const retrievedocument = await mongoose.connection
-      .collection("documents") // name of collection to retrieve from
+      .collection("Listings") // name of collection to retrieve from
       .find({})
       .toArray();
 
