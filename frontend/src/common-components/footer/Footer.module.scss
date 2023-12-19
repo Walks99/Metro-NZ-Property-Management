@@ -1,0 +1,40 @@
+
+.footerContainer {
+  height: 260px;
+
+  .topFooterContainer {
+    height: 180px;
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .footerTitleContainer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      font-size: 20px;
+    }
+
+    .quickLinksAndIconsContainer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      quicklinks {
+        display: flex;
+        justify-content: space-between;
+        color: white;
+      }
+    }
+  }
+
+  .bottomFooterContainer {
+    display: flex;
+    justify-content: flex-start;
+    height: 80px;
+    background-color: #d9d9d9;
+  }
+}
