@@ -16,6 +16,7 @@ function App() {
       listingTitle: document.getElementById("listingTitle"),
       listingDescription: document.getElementById("listingDescription"),
       pathToImages: document.getElementById("pathToImages"),
+      propertyType: document.getElementById("propertyType"),
       bedrooms: document.getElementById("bedrooms"),
       bathrooms: document.getElementById("bathrooms"),
       carparks: document.getElementById("carparks"),
@@ -25,6 +26,7 @@ function App() {
       suburb: document.getElementById("suburb"),
       street: document.getElementById("street"),
       streetNumber: document.getElementById("streetNumber"),
+      pricePerWeek: document.getElementById("pricePerWeek"),
     };
 
     if (listingDetails) {
@@ -33,6 +35,7 @@ function App() {
         listingTitle: listingDetails.listingTitle.value,
         listingDescription: listingDetails.listingDescription.value,
         pathToImages: listingDetails.pathToImages.value,
+        propertyType: listingDetails.propertyType.value,
         bedrooms: listingDetails.bedrooms.value,
         bathrooms: listingDetails.bathrooms.value,
         carparks: listingDetails.carparks.value,
@@ -42,6 +45,7 @@ function App() {
         suburb: listingDetails.suburb.value,
         street: listingDetails.street.value,
         streetNumber: listingDetails.streetNumber.value,
+        pricePerWeek: listingDetails.pricePerWeek.value,
       };
 
       // Convert the data object to JSON
@@ -66,6 +70,7 @@ function App() {
           listingDetails.listingTitle.value = "";
           listingDetails.listingDescription.value = "";
           listingDetails.pathToImages.value = "";
+          listingDetails.propertyType.value = "";
           listingDetails.bedrooms.value = "";
           listingDetails.bathrooms.value = "";
           listingDetails.carparks.value = "";
@@ -75,6 +80,7 @@ function App() {
           listingDetails.suburb.value = "";
           listingDetails.street.value = "";
           listingDetails.streetNumber.value = "";
+          listingDetails.pricePerWeek.value = "";
         } else if (response.status === 400) {
           const data = await response.json();
           setSuccessMessage(data.message);
@@ -171,6 +177,15 @@ function App() {
         <label htmlFor="pathToImages">Path to image: </label>
         <input type="text" id="pathToImages" name="pathToImage" />
         <br />
+        <label htmlFor="propertyType">Property Type: </label>
+        <select id="propertyType" name="propertyType">
+          <option value="NoAnswerSelected">--Select type--</option>
+          <option value="Apartment">Apartment</option>
+          <option value="House">House </option>
+          <option value="Townhouse">Townhouse</option>
+          <option value="Unit">Unit</option>
+        </select>
+        <br />
         <label htmlFor="bedrooms">Number of bedrooms: </label>
         <input type="Number" id="bedrooms" name="bedrooms" />
         <br />
@@ -180,14 +195,40 @@ function App() {
         <label htmlFor="carparks">Number of carparks: </label>
         <input type="Number" id="carparks" name="carparks" />
         <br />
-        <label htmlFor="petsAllowed">Pets allowed?: (true/false) </label>
-        <input type="text" id="petsAllowed" name="petsAllowed" />
+        <label htmlFor="petsAllowed">Pets allowed?: </label>
+        <select id="petsAllowed" name="petsAllowed">
+          <option value="NoAnswerSelected">--Select Yes/No--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No </option>
+        </select>
         <br />
         <label htmlFor="country">Country: </label>
-        <input type="text" id="country" name="country" />
+        <select id="country" name="country">
+          <option value="selectPropertyType">--Select Country--</option>
+          <option value="New Zealand">New Zealand</option>
+          <option value="Australia">Australia </option>
+        </select>
         <br />
         <label htmlFor="city">Town/City: </label>
-        <input type="text" id="city" name="city" />
+        <select id="city" name="city">
+         <option value="selectPropertyType">--Select City--</option>
+          <option value="selectCity">Select a City</option>
+          <option value="Auckland">Auckland</option>
+          <option value="Wellington">Wellington</option>
+          <option value="Christchurch">Christchurch</option>
+          <option value="Hamilton">Hamilton</option>
+          <option value="Tauranga">Tauranga</option>
+          <option value="Dunedin">Dunedin</option>
+          <option value="PalmerstonNorth">Palmerston North</option>
+          <option value="NapierHastings">Napier-Hastings</option>
+          <option value="Nelson">Nelson</option>
+          <option value="Rotorua">Rotorua</option>
+          <option value="NewPlymouth">New Plymouth</option>
+          <option value="Whangarei">Whangarei</option>
+          <option value="Invercargill">Invercargill</option>
+          <option value="Whanganui">Whanganui</option>
+          <option value="Gisborne">Gisborne</option>
+        </select>
         <br />
         <label htmlFor="suburb">Suburb: </label>
         <input type="text" id="suburb" name="suburb" />
@@ -197,6 +238,9 @@ function App() {
         <br />
         <label htmlFor="streetNumber">Street Number: </label>
         <input type="Number" id="streetNumber" name="streetNumber" />
+        <br />
+        <label htmlFor="pricePerWeek">Price (per week): </label>
+        <input type="Number" id="pricePerWeek" name="pricePerWeek" />
         <br />
         <button type="submit">Upload</button>
       </form>
@@ -219,11 +263,17 @@ function App() {
                   <span key={document._id}>
                     <b>Property record ID:</b> {JSON.stringify(document._id)}
                     <br />
-                    <b>Listing title:</b>{JSON.stringify(document.listingTitle)}
+                    <b>Listing title:</b>
+                    {JSON.stringify(document.listingTitle)}
                     <br />
-                    <b>Listing Description:</b>{JSON.stringify(document.listingDescription)}
+                    <b>Listing Description:</b>
+                    {JSON.stringify(document.listingDescription)}
                     <br />
-                    <b>Path to images:</b>{JSON.stringify(document.pathToImages)}
+                    <b>Path to images:</b>
+                    {JSON.stringify(document.pathToImages)}
+                    <br />
+                    <b>Property Type:</b>
+                    {JSON.stringify(document.propertyType)}
                     <br />
                     <b>Bedrooms:</b> {JSON.stringify(document.bedrooms)}
                     <br />
@@ -241,7 +291,11 @@ function App() {
                     <br />
                     <b>Street:</b> {JSON.stringify(document.street)}
                     <br />
-                    <b>Street Number:</b>{JSON.stringify(document.streetNumber)}
+                    <b>Street Number: </b>
+                    {JSON.stringify(document.streetNumber)}
+                    <br />
+                    <b>Price (per week): </b>
+                    {JSON.stringify(document.pricePerWeek)}
                     <br />
                   </span>
                 </li>
