@@ -31,15 +31,17 @@ const documentSchema = new mongoose.Schema({
   listingTitle: String,
   listingDescription: String,
   pathToImages: String,
+  propertyType: String,
   bedrooms: Number,
   bathrooms: Number,
   carparks: Number,
-  petsAllowed: Boolean,
+  petsAllowed: String,
   country: String,
   city: String,
   suburb: String,
   street: String,
-  streetNumber: Number
+  streetNumber: Number,
+  pricePerWeek: Number
 });
 
 const Document = mongoose.model("Document", documentSchema, "Listings");
