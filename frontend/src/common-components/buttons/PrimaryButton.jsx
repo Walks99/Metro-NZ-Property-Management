@@ -4,17 +4,30 @@ import styles from "./PrimaryButton.module.css";
 // <PrimaryButton displayText=""></PrimaryButton>
 
 export default function PrimaryButton(props) {
-    // const customSize = {
-    //     width: `${props.width}`,
-    //     height: `${props.height}`
-    // }; -----------------------------> This didn't seem needed, but uncomment if it is - BW
+  // const customSize = {
+  //     width: `${props.width}`,
+  //     height: `${props.height}`
+  // }; -----------------------------> This didn't seem needed, but uncomment if it is - BW
 
-    return (
-        <div 
-            id={styles['primaryButton']}
-            style={{width: `${props.width}`, height: `${props.height}`, marginTop: `${props.marginTop}`, marginBottom: `${props.marginBottom}`}}>
+  const handleClick = () => {
+    // Call your onClick function
+    if (props.onClick) {
+      props.onClick();
+    }
+  };
 
-            {props.displayText}
-        </div>
-    );
+  return (
+    <div
+      id={styles["primaryButton"]}
+      style={{
+        width: `${props.width}`,
+        height: `${props.height}`,
+        marginTop: `${props.marginTop}`,
+        marginBottom: `${props.marginBottom}`,
+      }}
+      onClick={handleClick}
+    >
+      {props.displayText}
+    </div>
+  );
 }
