@@ -221,7 +221,7 @@ function ChosenPropertyListing() {
                         <img
                           src={AgentPhoto}
                           alt="Property agent"
-                          className={Styles.popAgentPhoto}
+                          className={Styles.popupAgentPhoto}
                         />
                       </div>
                       <div className={Styles.popupAgentinfoContainer}>
@@ -237,23 +237,19 @@ function ChosenPropertyListing() {
                     <div className={Styles.popupContactAgentFormContainer}>
                       <div className={Styles.popupContactAgentFormField}>
                         <label htmlFor="fullName">Full Name</label>
-                        <br />
                         <input type="text" id="fullName" placeholder="Text" />
                       </div>
                       <div className={Styles.popupContactAgentFormField}>
                         <label htmlFor="email">Email</label>
-                        <br />
                         <input type="text" id="email" placeholder="Text"/>
                       </div>
                       <div className={Styles.popupContactAgentFormField}>
                         <label htmlFor="phone">Phone</label>
-                        <br />
                         <input type="text" id="phone" placeholder="Text"/>
                       </div>
                       <div className={Styles.popupContactAgentFormField}>
                         <label htmlFor="message">Message</label>
-                        <br />
-                        <input type="text" id="message" placeholder="Text"/>
+                        <input type="text" id="message" placeholder="Text" className={Styles.messageBox}/>
                       </div>
                     </div>
                   </div>
