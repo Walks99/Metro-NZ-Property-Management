@@ -24,7 +24,7 @@ services:
       - "4000:3000"
     environment:
       PORT: 3000
-      MONGODB_URI: mongodb://mongo_db:27017
+      MONGODB_URI: mongodb://mongo_db:4545
       DB_NAME: datarecords
       NAME: dawg
     depends_on:
@@ -39,7 +39,7 @@ services:
     image: mongo:latest
     restart: always
     ports:
-      - "4545:27017"
+      - "2717:27017"
     volumes:
       - mongo_db:/data/db
 
