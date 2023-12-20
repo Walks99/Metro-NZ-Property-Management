@@ -12,9 +12,12 @@ import PetsDefault from "../../assets/icons/PetsDefault.png";
 import PrimaryButton from "../../common-components/buttons/PrimaryButton";
 import SecondaryButton from "../../common-components/buttons/SecondaryButton";
 import AgentPhoto from "../../assets/agent-photos/agentPhoto.jpg";
+import Popup from "../../common-components/popups/Popup";
 
 function ChosenPropertyListing() {
   const [morePropertyDetails, setMorePropertyDetails] = useState(false);
+  const [contactAgentPopup, setContactAgenctPopup] = useState(false);
+  const [bookNowPopup, setBookNewPopup] = useState(false);
 
   const showMorePropertyDetails = () => {
     setMorePropertyDetails(!morePropertyDetails);
@@ -206,12 +209,56 @@ function ChosenPropertyListing() {
                   displayText="Book a viewing"
                   width={"45%"}
                   height={"40px"}
+                  onClick={() => setContactAgenctPopup(true)}
                 />
+                <Popup
+                  trigger={contactAgentPopup}
+                  setTrigger={setContactAgenctPopup}
+                >
+                  <div>
+                    <div>
+                      <img
+                        src={AgentPhoto}
+                        alt="Property agent"
+                        className={Styles.agentPhoto}
+                      />
+                    </div>
+                    <div>
+                      <p>AGENT INFO AND PHONE NUMBER</p>
+                    </div>
+                  </div>
+                  <div className={Styles.contactAgentFormContainer}>
+                    <div className={Styles.contactAgentFormField}>
+                      <label htmlFor="fullName">Full Name</label>
+                      <br />
+                      <input type="text" id="fullName" />
+                    </div>
+                    <div className={Styles.contactAgentFormField}>
+                      <label htmlFor="email">Email</label>
+                      <br />
+                      <input type="text" id="email" />
+                    </div>
+                    <div className={Styles.contactAgentFormField}>
+                      <label htmlFor="phone">Phone</label>
+                      <br />
+                      <input type="text" id="phone" />
+                    </div>
+                    <div className={Styles.contactAgentFormField}>
+                      <label htmlFor="message">Message</label>
+                      <br />
+                      <input type="text" id="message" />
+                    </div>
+                  </div>
+                </Popup>
                 <PrimaryButton
                   displayText="Enquire"
                   width={"45%"}
                   height={"40px"}
+                  onClick={() => setBookNewPopup(true)}
                 />
+                <Popup trigger={bookNowPopup} setTrigger={setBookNewPopup}>
+                  <h1>BOOK NOW POPUP</h1>
+                </Popup>
               </div>
             </div>
           </div>
