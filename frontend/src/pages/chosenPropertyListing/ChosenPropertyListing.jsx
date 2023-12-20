@@ -8,7 +8,7 @@ import CarDefault from "../../assets/icons/CarDefault.png";
 import BathroomDefault from "../../assets/icons/BathroomDefault.png";
 import BedroomDefault from "../../assets/icons/BedroomDefault.png";
 import PetsDefault from "../../assets/icons/PetsDefault.png";
-// import SecondaryButton from "../../common-components/buttons/SecondaryButton";
+import SecondaryButton from "../../common-components/buttons/SecondaryButton";
 
 function ChosenPropertyListing() {
   return (
@@ -84,7 +84,8 @@ function ChosenPropertyListing() {
             favoritum reperiat.{" "}
           </p>
 
-          <button className={Styles.showMoreButton}>Show more</button>
+          {/* <button className={Styles.showMoreButton}>Show more</button> */}
+          <SecondaryButton displayText="Show more" width={120} height={40} marginTop={14} marginBottom={14}/>
         </propertydetails>
 
         <agentcontactdetails className={Styles.agentContactDetails}>
