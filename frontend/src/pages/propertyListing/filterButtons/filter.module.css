@@ -1,0 +1,61 @@
+/* filter.module.css */
+
+.dropdownContainer {
+  position: relative;
+}
+
+.selectedOption {
+  cursor: pointer;
+  text-align: center;
+  border: 3px solid black;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.selectedValue {
+  margin: 0;
+  padding: 0;
+  width: 80px;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 100px;
+  width: max-content;
+  text-align: center;
+}
+
+.dropdownOptions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  position: absolute;
+  top: 100%;
+  left: -20%;
+
+  width: 150%;
+  display: block;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  font-size: small;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.dropdownOptions li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdownOptions li:hover {
+  background-color: #f2f2f2;
+}
+
+.redbackground {
+  background-color: #e73336;
+  color: white;
+  font-weight: bolder;
+}

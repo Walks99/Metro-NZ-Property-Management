@@ -1,0 +1,6 @@
+.filterButtons {
+  display: flex;
+  width: 950px;
+  justify-content: space-evenly;
+  margin-top: 5px;
+}
