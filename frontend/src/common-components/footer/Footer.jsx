@@ -9,7 +9,10 @@ import LinkedinIcon from "../../assets/icons/Linkedin.png";
 function Footer() {
   return (
     <div className={Styles.footerContainer}>
-        <topfootersection className={Styles.topFooterContainer}>
+      <topfootersection className={Styles.topFooterSection}>
+        <button className={Styles.BackToPreviousPageButton}>Back</button>
+      </topfootersection>
+        <middlefootersection className={Styles.middleFooterContainer}>
 {/* --------------------------------   TITLE OF FOOTER   ------------------------------------- */}
           <footertitle className={Styles.footerTitleContainer}>
             <h2>Quick Links</h2>
@@ -37,7 +40,7 @@ function Footer() {
             </icons>
           </quicklinksandicons>
 {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
-      </topfootersection>
+      </middlefootersection>
       <bottomfootersection className={Styles.bottomFooterContainer}>
 {/* -------------------------------   COPY RIGHT NOTICE   ------------------------------------ */}
         <copyrightnotice className={Styles.copyRightNoticeContainer}>

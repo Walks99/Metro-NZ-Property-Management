@@ -5,10 +5,29 @@
 }
 
 .footerContainer {
-  height: 240px;
+  height: 280px;
 
-  .topFooterContainer {
-    height: 80%;
+  .topFooterSection {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #d9d9d9;
+    height: 25%;
+    .BackToPreviousPageButton {
+      background-color: #E73436;
+      color: white;
+      font-weight: 800;
+      font-size: 16px;
+      width: 6%;
+      height: 70%;
+      border-radius: 32px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .middleFooterContainer {
+    height: 60%;
     background-color: #333333;
     display: flex;
     flex-direction: column;
@@ -29,7 +48,7 @@
 
     .quickLinksAndIconsContainer {
       width: 100%;
-      height: 60%;
+      height: 70%;
       display: flex;
       justify-content: space-between;
 
@@ -49,7 +68,7 @@
 
           span {
             &:hover {
-              color: #E73236;
+              color: #e73236;
             }
           }
 
@@ -63,12 +82,11 @@
 
       .icons {
         align-self: flex-start;
-        
+
         img {
           margin-left: 8px;
         }
       }
-
     }
   }
 
@@ -76,7 +94,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 20%;
+    height: 15%;
     padding-left: 40px;
     background-color: #d9d9d9;
   }
