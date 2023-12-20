@@ -215,38 +215,46 @@ function ChosenPropertyListing() {
                   trigger={contactAgentPopup}
                   setTrigger={setContactAgenctPopup}
                 >
-                  <div>
-                    <div>
-                      <img
-                        src={AgentPhoto}
-                        alt="Property agent"
-                        className={Styles.agentPhoto}
-                      />
+                  <div className={Styles.popupContainer}>
+                    <div className={Styles.popupAgentImageAndInfoContainer}>
+                      <div className={Styles.popupAgentImageContainer}>
+                        <img
+                          src={AgentPhoto}
+                          alt="Property agent"
+                          className={Styles.popAgentPhoto}
+                        />
+                      </div>
+                      <div className={Styles.popupAgentinfoContainer}>
+                        <p style={{ fontWeight: "bold", fontSize: "18px" }}>
+                          Penny Rose
+                        </p>
+                        <p style={{ fontSize: "14px" }}>Residential Rentals</p>
+                        <button className={Styles.popupCallAgentButton}>
+                          +64 28 934 334
+                        </button>
+                      </div>
                     </div>
-                    <div>
-                      <p>AGENT INFO AND PHONE NUMBER</p>
-                    </div>
-                  </div>
-                  <div className={Styles.contactAgentFormContainer}>
-                    <div className={Styles.contactAgentFormField}>
-                      <label htmlFor="fullName">Full Name</label>
-                      <br />
-                      <input type="text" id="fullName" />
-                    </div>
-                    <div className={Styles.contactAgentFormField}>
-                      <label htmlFor="email">Email</label>
-                      <br />
-                      <input type="text" id="email" />
-                    </div>
-                    <div className={Styles.contactAgentFormField}>
-                      <label htmlFor="phone">Phone</label>
-                      <br />
-                      <input type="text" id="phone" />
-                    </div>
-                    <div className={Styles.contactAgentFormField}>
-                      <label htmlFor="message">Message</label>
-                      <br />
-                      <input type="text" id="message" />
+                    <div className={Styles.popupContactAgentFormContainer}>
+                      <div className={Styles.popupContactAgentFormField}>
+                        <label htmlFor="fullName">Full Name</label>
+                        <br />
+                        <input type="text" id="fullName" placeholder="Text" />
+                      </div>
+                      <div className={Styles.popupContactAgentFormField}>
+                        <label htmlFor="email">Email</label>
+                        <br />
+                        <input type="text" id="email" placeholder="Text"/>
+                      </div>
+                      <div className={Styles.popupContactAgentFormField}>
+                        <label htmlFor="phone">Phone</label>
+                        <br />
+                        <input type="text" id="phone" placeholder="Text"/>
+                      </div>
+                      <div className={Styles.popupContactAgentFormField}>
+                        <label htmlFor="message">Message</label>
+                        <br />
+                        <input type="text" id="message" placeholder="Text"/>
+                      </div>
                     </div>
                   </div>
                 </Popup>
