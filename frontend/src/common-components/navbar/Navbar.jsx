@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Styles from "./Navbar.module.scss"
 import { NavLink } from 'react-router-dom';
-import CompanyLogo from "../../assets/Company-logo.png";
+import CompanyLogo from "../../assets/company-logos/Company-logo-edited.jpg";
+
 import { Icon } from '@iconify/react';
 import menuBurgerHorizontalLight from '@iconify/icons-iconamoon/menu-burger-horizontal-light';
 import cross1 from '@iconify/icons-radix-icons/cross-1';
@@ -15,7 +16,7 @@ function Navbar() {
 
   return (
     <div className={Styles.navBarContainer}>
-      <img src={CompanyLogo} alt='Company logo'/>
+      <img src={CompanyLogo} alt='Company logo' style={{width: "240px", height: "auto"}}/>
       <navbarlinks className={Styles.navLinkContainer}>
         <NavLink to=""><span>Services</span></NavLink>
         <NavLink to=""><span>About</span></NavLink>

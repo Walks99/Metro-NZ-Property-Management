@@ -57,29 +57,32 @@ function ChosenPropertyListing() {
         />
       </propertyimages>
 
-
       <propertydetailscontainer className={Styles.propertyDetailsContainer}>
-
         <propertydetails className={Styles.propertyDetails}>
-
           <propertyicons className={Styles.propertyIcons}>
             <div>
-              <img src={CarDefault} alt="Like this page" />
-              <img src={BedroomDefault} alt="Like this page" />
-              <img src={BathroomDefault} alt="Like this page" />
-              <img src={PetsDefault} alt="Like this page" />
+              <img src={CarDefault} alt="Like this page" className={Styles.bedBathShowCarPetsIcons} />
+              <img src={BedroomDefault} alt="Like this page" className={Styles.bedBathShowCarPetsIcons}/>
+              <img src={BathroomDefault} alt="Like this page" className={Styles.bedBathShowCarPetsIcons}/>
+              <img src={PetsDefault} alt="Like this page" className={Styles.bedBathShowCarPetsIcons}/>
             </div>
             <div>
-              <img src={Heart} alt="Like this page" />
-              <img src={Share} alt="Share this page" />
+              <img src={Heart} alt="Like this page" className={Styles.likeAndShareIcon}/>
+              <img src={Share} alt="Share this page" className={Styles.likeAndShareIcon}/>
             </div>
           </propertyicons>
 
-          <p>Property address</p>
-          <p>Weekly rent</p>
-          <p>Listing title</p>
-          <p>Listing description</p>
-          <p>Property address</p>
+          <p style={{fontWeight: "bold", marginTop: "10px"}}>15 Purple Street, Auckland</p>
+          <p style={{fontWeight: "bold", fontSize: "22px", marginTop: "10px"}}>$480/week</p>
+          <h1 style={{color: "rgb(231,52,54)", marginTop: "20px"}}>Gorgeous Two Bedrooms</h1>
+          <p style={{marginTop: "20px"}}>
+            Gelatum, deliciae frigidissimae, est dulce alimentum quod pluribus
+            saeculis in toto mundo amatur. Gelati varietates sunt innumerae, ex
+            lacte factae, suco fructuum vel aromatibus additis, et in multis
+            coloribus et figuris apparere possunt. Gustus ab vaniglia et cacao
+            ad fructus silvestres vel mentam variare possunt, ut quisque suum
+            favoritum reperiat.{" "}
+          </p>
 
           <button className={Styles.showMoreButton}>Show more</button>
         </propertydetails>
