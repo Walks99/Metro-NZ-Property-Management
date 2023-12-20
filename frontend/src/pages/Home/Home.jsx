@@ -6,6 +6,7 @@ import Navbar from "../../common-components/navbar/Navbar";
 import Footer from "../../common-components/footer/Footer";
 import Hero from "./components/Hero";
 import VideoSection from "./components/VideoSection";
+import ButtonsSection from "./components/ButtonsSection";
 
 // FURTHER IMPORTS
 
@@ -15,6 +16,7 @@ export default function Home() {
             <Navbar></Navbar>
             <Hero></Hero>
             <VideoSection></VideoSection>
+            <ButtonsSection></ButtonsSection>
 
             <Footer></Footer>
         </div>
