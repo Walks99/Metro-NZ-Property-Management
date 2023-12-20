@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Styles from "./Navbar.module.scss"
 import { NavLink } from 'react-router-dom';
 import CompanyLogo from "../../assets/Company-logo.png";
-import BurgerIcon from "../../assets/icons/Burger.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Icon } from '@iconify/react';
+import menuBurgerHorizontalLight from '@iconify/icons-iconamoon/menu-burger-horizontal-light';
+import cross1 from '@iconify/icons-radix-icons/cross-1';
 
 function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -30,21 +30,22 @@ function Navbar() {
             <NavLink to="/dropdown-item-1">Dispute Process</NavLink>
             <NavLink to="/dropdown-item-1">Home</NavLink>
 
-            <FontAwesomeIcon
-              icon={faXmark}
+             <Icon 
+              icon={cross1} 
               className="md:hidden mr-8 w-7 text-2xl h-auto cursor-pointer"
-              style={{ color: "black", fontSize: "50px", marginRight: "20px" }}
+              color="#616161" 
+              style={{ fontSize: "50px", marginRight: "20px" }}
               onClick={toggleDropdown}
-            />
+              />
           </>
         ) : (
-          <img
-            src={BurgerIcon}
-            alt="Burger Icon"
-            className="md:hidden mr-8 w-7 text-2xl h-auto cursor-pointer"
-            style={{ color: "black", fontSize: "50px", marginRight: "20px" }}
-            onClick={toggleDropdown}
-          />
+             <Icon 
+              icon={menuBurgerHorizontalLight} 
+              className="md:hidden mr-8 w-7 text-2xl h-auto cursor-pointer"
+              color="#616161" 
+              style={{ fontSize: "50px", marginRight: "20px" }}
+              onClick={toggleDropdown}
+              />
         )}
       </navbarlinks>
     </div>

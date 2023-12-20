@@ -40,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@iconify/icons-iconamoon": "^1.2.0",
+    "@iconify/icons-radix-icons": "^1.2.9",
+    "@iconify/react": "^4.1.1"
   }
 }
