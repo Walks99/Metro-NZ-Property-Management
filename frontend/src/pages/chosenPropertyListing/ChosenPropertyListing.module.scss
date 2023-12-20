@@ -17,7 +17,6 @@
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(4, 1fr);
-    // justify-content: center;
     .mainImageContainer {
         grid-row: span 2;
         grid-column: span 2;
