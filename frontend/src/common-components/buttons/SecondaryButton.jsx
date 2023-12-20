@@ -12,7 +12,7 @@ export default function SecondaryButton(props) {
     return (
         <div 
             id={styles['secondaryButton']} 
-            style={{width: `${props.width}px`, height: `${props.height}px`, marginTop: `${props.marginTop}px`, marginBottom: `${props.marginBottom}px`}}>
+            style={{width: `${props.width}`, height: `${props.height}`, marginTop: `${props.marginTop}`, marginBottom: `${props.marginBottom}`}}>
 
             {props.displayText}
         </div>

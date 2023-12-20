@@ -8,7 +8,9 @@ import CarDefault from "../../assets/icons/CarDefault.png";
 import BathroomDefault from "../../assets/icons/BathroomDefault.png";
 import BedroomDefault from "../../assets/icons/BedroomDefault.png";
 import PetsDefault from "../../assets/icons/PetsDefault.png";
+import PrimaryButton from "../../common-components/buttons/PrimaryButton";
 import SecondaryButton from "../../common-components/buttons/SecondaryButton";
+import AgentPhoto from "../../assets/agent-photos/agentPhoto.jpg";
 
 function ChosenPropertyListing() {
   return (
@@ -85,11 +87,27 @@ function ChosenPropertyListing() {
           </p>
 
           {/* <button className={Styles.showMoreButton}>Show more</button> */}
-          <SecondaryButton displayText="Show more" width={120} height={40} marginTop={14} marginBottom={14}/>
+          <SecondaryButton displayText="Show more" width={"18%"} height={"40px"} marginTop={"14px"} marginBottom={"14px"}/>
         </propertydetails>
 
-        <agentcontactdetails className={Styles.agentContactDetails}>
-          <p>agent contact details</p>
+        <agentcontactdetails className={Styles.agentContactDetailsContainer}>
+          <div className={Styles.agentContactDetails}>
+            <div className={Styles.agentImageContainer}>
+              <img src={AgentPhoto} alt="Property agent" className={Styles.agentPhoto}/>
+            </div>
+            <div className={Styles.agentNameRoleBookViewingMakeEnquiryContainer}>
+                <div className={Styles.agentNameAndRole}>
+                  <p style={{fontWeight: "bold", fontSize: "18px"}}>Penny Rose</p>
+                  <p>Residential Rentals</p>
+                </div>
+              <div className={Styles.bookViewingEnquireButtons}>
+                <SecondaryButton displayText="Book a viewing" width={"45%"} height={"40px"}/>
+                <PrimaryButton displayText="Enquire" width={"45%"} height={"40px"}/>
+              </div>
+            </div>
+          </div>
+
+          
         </agentcontactdetails>
       </propertydetailscontainer>
       <Footer />
