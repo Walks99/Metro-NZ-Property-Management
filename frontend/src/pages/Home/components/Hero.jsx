@@ -12,8 +12,9 @@ export default function Hero() {
                 <h2>Unlock Your Dream Home Today</h2>
                 <h3>Your home, your future</h3>
                 <div id={styles['buttons']}>
-                    <SecondaryButton displayText="Property Management"></SecondaryButton>
-                    <PrimaryButton displayText="Find a Rental"></PrimaryButton>
+                    {/* GRID THIS LATER ON TO ADD THE 26PX GAP WITHOUT RUINING LAYOUT */}
+                    <SecondaryButton displayText="Property Management" width={300} height={50}></SecondaryButton>
+                    <PrimaryButton displayText="Find a Rental" width={300} height={50}></PrimaryButton>
                 </div>
             </div>
         </div>

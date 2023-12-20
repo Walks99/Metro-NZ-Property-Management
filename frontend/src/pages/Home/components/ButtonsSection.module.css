@@ -1,0 +1,6 @@
+#buttonsGrid {
+    width: 1139px;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 3fr;
+}

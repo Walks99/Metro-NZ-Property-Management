@@ -4,8 +4,16 @@ import styles from "./SecondaryButton.module.css";
 // <SecondaryButton displayText=""></SecondaryButton>
 
 export default function SecondaryButton(props) {
+    const customSize = {
+        width: `${props.width}`,
+        height: `${props.height}`
+    };
+
     return (
-        <div id={styles['secondaryButton']}>
+        <div 
+            id={styles['secondaryButton']} 
+            style={{width: `${props.width}px`, height: `${props.height}px`}}>
+
             {props.displayText}
         </div>
     );
