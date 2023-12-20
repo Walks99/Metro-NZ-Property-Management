@@ -1,10 +1,12 @@
 import React from 'react'
 import Footer from "../../common-components/footer/Footer"
+import Navbar from "../../common-components/navbar/Navbar"
 
 function ChosenPropertyListing() {
   return (
     <>
-    <div>ChosenPropertyListing</div>
+    <div>Chosen Property Listing page</div>
+    <Navbar />
     <Footer />
     </>
   )
