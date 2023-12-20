@@ -33,3 +33,7 @@
     flex-direction: row;
     padding-top: 32px;
 }
+
+#buttons > SecondaryButton {
+    margin-right: 24px;
+}

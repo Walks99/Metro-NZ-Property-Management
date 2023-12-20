@@ -1,6 +1,14 @@
+#buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #buttonsGrid {
-    width: 1139px;
+    width: 1140px;
     display: grid;
     gap: 24px;
-    grid-template-columns: 3fr;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    margin: 64px;
 }

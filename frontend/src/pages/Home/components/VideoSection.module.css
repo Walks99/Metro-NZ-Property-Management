@@ -9,6 +9,14 @@
     padding: 8px;
 }
 
+#videoSec > h4 {
+    font-size: 24px;
+}
+
+#videoSec > h5 {
+    font-size: 16px;
+}
+
 #videoContainer {
     border-radius: 24px;
     overflow: hidden;

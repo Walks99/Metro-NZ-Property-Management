@@ -12,7 +12,7 @@ export default function HomePageButton(props) {
     return (
         <div id={styles['hpButton']}>
             <div id={styles['icon']}>
-                <Icon icon={requiredIcon} />
+                <Icon icon={requiredIcon} width="100" height="100" />
             </div>
             <div id={styles['text']}>
                 {props.displayText}

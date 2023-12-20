@@ -15,3 +15,7 @@
     font-size: 16px;
     font-weight: 700;
 }
+
+#secondaryButton:hover {
+    background-color: #D9D9D9;
+}
