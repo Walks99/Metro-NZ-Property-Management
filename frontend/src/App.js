@@ -1,15 +1,15 @@
 import "./App.css";
-import { useState } from "react";
-
-// COMPONENTS
-import Home from "./pages/Home/Home"
+import {Routes,Route} from 'react-router-dom';
+import DataEntry from "./data-entry/DataEntry";
+import Chosenpropertylisting from "./pages/ben-walker/ChosenPropertyListing";
 
 function App() {
   return (
-    <> 
-      <Home></Home>
-    </>
-  );
+    <Routes>
+      <Route path='/dataentry' element={<DataEntry />}></Route>
+      <Route path='/chosenpropertylisting' element={<Chosenpropertylisting />}></Route>
+    </Routes>
+  )
 }
 
 export default App;

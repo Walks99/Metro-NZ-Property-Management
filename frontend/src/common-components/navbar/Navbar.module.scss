@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .navBarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    .navLinkContainer {
+      display: flex;
+      align-items: center;
+  
+      a {
+        text-decoration: none;
+        color: #555555;
+        font-weight: bold;
+        margin-right: 40px;
+
+        &:hover {
+            color: #E73236
+        }
+      }
+    }
+  }
+  
