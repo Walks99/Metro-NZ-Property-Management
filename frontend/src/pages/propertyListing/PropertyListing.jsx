@@ -4,6 +4,7 @@ import Dropdown from "./filterButtons/FilterButton";
 import styles from "./PropertyListing.module.css";
 import Navbar from "../../common-components/navbar/Navbar";
 import Footer from "../../common-components/footer/Footer";
+import Properties from "./Properties/Properties";
 
 export default function PropertyListing() {
   const filterTexts = [
@@ -26,11 +27,14 @@ export default function PropertyListing() {
   return (
     <div className={styles.PropertyListingContainer}>
       <Navbar></Navbar>
-      <SearchAndFilter className={styles.SearchComponent} />
-      <div className={styles.filterButtons}>
-        {filterTexts.map((options, index) => (
-          <Dropdown key={index} options={options} />
-        ))}
+      <div className={styles.mainSection}>
+        <SearchAndFilter className={styles.SearchComponent} />
+        <div className={styles.filterButtons}>
+          {filterTexts.map((options, index) => (
+            <Dropdown key={index} options={options} />
+          ))}
+        </div>
+        <Properties className={styles.properties}></Properties>
       </div>
       <Footer></Footer>
     </div>
