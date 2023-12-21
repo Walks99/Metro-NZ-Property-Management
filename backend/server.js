@@ -2,6 +2,8 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const { ObjectId } = require("mongodb");
+
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // ------------------------------------------------------- ENV -------------------------------------------------------
 dotenv.config();
@@ -113,6 +115,25 @@ app.delete("/api/deletedocuments/:id", async (req, res) => {
     // Handle any errors that occur during the deletion process
     console.error("Error deleting document:", error.message);
     res.status(500).json({ message: 'Internal server error' });
+  }
+});
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// --------------------------------- ENDPOINT - RETRIEVE PROPERTIES FROM DATABASE ------------------------------------
+app.get("/api/retrieveproperties/:id", async (req, res) => {
+  const propertyId = req.params.id;
+  try {
+
+    const objectId = new ObjectId(propertyId);
+    // Query the database to retrieve a document
+    const retrievedProperty = await mongoose.connection
+      .collection("Listings") // name of collection to retrieve from
+      .findOne({ _id: objectId });
+
+    console.log("/retireveproperties end point hit! Retrieved Properties:", retrievedProperty);
+    // Send retrieved document back to Postman
+    res.json(retrievedProperty);
+  } catch (error) {
+    console.error("Error querying the database:", error);
   }
 });
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
