@@ -1,0 +1,56 @@
+.propertyContainer {
+  height: 650px;
+  width: 402px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.propertyImage {
+  width: 402px;
+  height: 422px;
+  object-fit: cover !important;
+  border-radius: 20px;
+}
+
+.viewButton {
+  width: 100%;
+  border: none;
+  background-color: #e73336;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: bolder;
+  color: white;
+  font-size: 15px;
+}
+
+.iconsContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.details {
+  text-align: left;
+}
+
+.address,
+.priceperWeek {
+  align-self: flex-start;
+}
+
+.propertiesContainer {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 402px 402px 402px;
+  justify-content: space-around;
+  row-gap: 50px;
+  margin-bottom: 50px;
+}
+
+.iconsAndViewContainer {
+  width: 100%;
+}
