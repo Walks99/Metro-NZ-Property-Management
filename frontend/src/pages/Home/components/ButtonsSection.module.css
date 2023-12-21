@@ -12,3 +12,11 @@
 
     margin: 64px;
 }
+
+@media screen and (max-width: 500px) {
+    #buttonsGrid {
+        grid-template-columns: 1fr 1fr;
+        width: 430px;
+        
+    }
+}

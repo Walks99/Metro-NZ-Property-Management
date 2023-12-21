@@ -5,6 +5,8 @@ import styles from "./Hero.module.css";
 import PrimaryButton from "../../../common-components/buttons/PrimaryButton";
 import SecondaryButton from "../../../common-components/buttons/SecondaryButton";
 
+import {NavLink} from 'react-router-dom';
+
 export default function Hero() {
     return (
         <div id={styles['heroGrid']}>
@@ -13,8 +15,10 @@ export default function Hero() {
                 <h3>Your home, your future</h3>
                 <div id={styles['buttons']}>
                     {/* GRID THIS LATER ON TO ADD THE 26PX GAP WITHOUT RUINING LAYOUT */}
+
                     <SecondaryButton displayText="Property Management" width={"300px"} height={"50px"}></SecondaryButton>
-                    <PrimaryButton displayText="Find a Rental" width={"300px"} height={"50px"}></PrimaryButton>
+                    <NavLink to="/propertyListing" style={{ textDecoration:'none' }}><PrimaryButton displayText="Find a Rental" width={"300px"} height={"50px"}></PrimaryButton></NavLink>
+
                 </div>
             </div>
         </div>

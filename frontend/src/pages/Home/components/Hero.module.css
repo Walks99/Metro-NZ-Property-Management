@@ -19,21 +19,36 @@
 
 #heroContent > h2 {
     color: #E73336;
-    font-size: 48px;
+    font-size: 64px;
     text-shadow: 0 4px 4px #00000050;
 }
 
 #heroContent > h3 {
     color: #000000;
-    font-size: 32px;
+    font-size: 50px;
 }
 
 #buttons {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
     padding-top: 32px;
 }
 
-#buttons > SecondaryButton {
-    margin-right: 24px;
+@media screen and (max-width: 500px) {
+    #heroContent > h2 {
+        color: #E73336;
+        font-size: 25px;
+        text-shadow: 0 4px 4px #00000050;
+    }
+
+    #heroGrid {
+        display: flex;
+        width: auto;
+    
+        background-image: url("../../../assets/Home/familyPhoto.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 235px;
+    }
 }

@@ -1,0 +1,24 @@
+#review {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+    min-width: 1224px;
+}
+
+#date, #main {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#author {
+    font-size: 16px;
+    font-weight: 700;
+}
