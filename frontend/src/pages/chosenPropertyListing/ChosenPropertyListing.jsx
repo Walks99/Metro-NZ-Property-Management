@@ -18,6 +18,10 @@ function ChosenPropertyListing() {
   const [morePropertyDetails, setMorePropertyDetails] = useState(false);
   const [contactAgentPopup, setContactAgenctPopup] = useState(false);
   const [bookNowPopup, setBookNewPopup] = useState(false);
+  const [
+    contactAgentPopupCheckboxSelected,
+    SetContactAgentPopupCheckboxSelected,
+  ] = useState(false);
 
   const showMorePropertyDetails = () => {
     setMorePropertyDetails(!morePropertyDetails);
@@ -308,13 +312,43 @@ function ChosenPropertyListing() {
                           }}
                         />
                       </div>
-                      {allFieldsFilled && (
-                        <div className={Styles.popupTermsAndConditionsCheckBox}>
-                          <input type="checkbox" id="agreeToTerms" />
-                          <label htmlFor="agreeToTerms">I agree to the<span style={{ color: "red" }}>{" "}Property Management Terms and Conditions</span>
-                          </label>
-                        </div>
-                      )}
+                      <div>
+                        {allFieldsFilled && (
+                          <div
+                            className={Styles.popupTermsAndConditionsCheckBox}
+                          >
+                            <input
+                              type="checkbox"
+                              id="agreeToTerms"
+                              onChange={() =>
+                                SetContactAgentPopupCheckboxSelected(
+                                  !contactAgentPopupCheckboxSelected
+                                )
+                              }
+                            />
+                            <label htmlFor="agreeToTerms">
+                              I agree to the
+                              <span style={{ color: "red" }}>
+                                {" "}
+                                Property Management Terms and Conditions
+                              </span>
+                            </label>
+                          </div>
+                        )}
+                      </div>
+                      <div className={Styles.bookViewingButtonContainer}>
+                        {contactAgentPopupCheckboxSelected && (
+                          <PrimaryButton
+                            displayText="Send"
+                            width={"100%"}
+                            height={"40px"}
+                            marginTop={"6%"}
+                            onClick={() =>
+                              setContactAgenctPopup(!contactAgentPopup)
+                            }
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
                 </Popup>
@@ -322,7 +356,7 @@ function ChosenPropertyListing() {
                   displayText="Enquire"
                   width={"45%"}
                   height={"40px"}
-                  onClick={() => setBookNewPopup(true)}
+                  onClick={() => setContactAgenctPopup(!contactAgentPopup)}
                 />
                 <Popup trigger={bookNowPopup} setTrigger={setBookNewPopup}>
                   <h1>BOOK NOW POPUP</h1>
