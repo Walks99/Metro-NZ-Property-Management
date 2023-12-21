@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Styles from "./ChosenPropertyListing.module.scss";
 import Footer from "../../common-components/footer/Footer";
 import Navbar from "../../common-components/navbar/Navbar";
@@ -13,8 +13,11 @@ import PrimaryButton from "../../common-components/buttons/PrimaryButton";
 import SecondaryButton from "../../common-components/buttons/SecondaryButton";
 import AgentPhoto from "../../assets/agent-photos/agentPhoto.jpg";
 import Popup from "../../common-components/popups/Popup";
+import { useParams } from "react-router-dom";
 
 function ChosenPropertyListing() {
+  const [properties, setProperties] = useState([])
+  const { id } = useParams();
   const [morePropertyDetails, setMorePropertyDetails] = useState(false);
   const [contactAgentPopup, setContactAgenctPopup] = useState(false);
   const [bookNowPopup, setBookNewPopup] = useState(false);
@@ -49,6 +52,21 @@ function ChosenPropertyListing() {
     );
     setAllFieldsFilled(filled);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:4000/api/retrieveproperties/${id}`
+        );
+        const requestedProperty = await response.json();
+        setProperties(requestedProperty);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, [id]);
 
   return (
     <div className={Styles.chosenPropertyListingContainer}>
