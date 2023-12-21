@@ -22,6 +22,30 @@ function ChosenPropertyListing() {
   const showMorePropertyDetails = () => {
     setMorePropertyDetails(!morePropertyDetails);
   };
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
+
+  const handleInputChange = (fieldName, value) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [fieldName]: value,
+    }));
+  };
+
+  const checkAllFieldsFilled = () => {
+    const filled = Object.values(formData).every(
+      (value) => value.trim() !== ""
+    );
+    setAllFieldsFilled(filled);
+  };
+
   return (
     <div className={Styles.chosenPropertyListingContainer}>
       <Navbar />
@@ -237,20 +261,60 @@ function ChosenPropertyListing() {
                     <div className={Styles.popupContactAgentFormContainer}>
                       <div className={Styles.popupContactAgentFormField}>
                         <label htmlFor="fullName">Full Name</label>
-                        <input type="text" id="fullName" placeholder="Text" />
+                        <input
+                          type="text"
+                          id="fullName"
+                          placeholder="Text"
+                          onChange={(e) => {
+                            handleInputChange("fullName", e.target.value);
+                            checkAllFieldsFilled();
+                          }}
+                        />
                       </div>
                       <div className={Styles.popupContactAgentFormField}>
                         <label htmlFor="email">Email</label>
-                        <input type="text" id="email" placeholder="Text"/>
+                        <input
+                          type="text"
+                          id="email"
+                          placeholder="Text"
+                          onChange={(e) => {
+                            handleInputChange("email", e.target.value);
+                            checkAllFieldsFilled();
+                          }}
+                        />
                       </div>
                       <div className={Styles.popupContactAgentFormField}>
                         <label htmlFor="phone">Phone</label>
-                        <input type="text" id="phone" placeholder="Text"/>
+                        <input
+                          type="text"
+                          id="phone"
+                          placeholder="Text"
+                          onChange={(e) => {
+                            handleInputChange("phone", e.target.value);
+                            checkAllFieldsFilled();
+                          }}
+                        />
                       </div>
                       <div className={Styles.popupContactAgentFormField}>
                         <label htmlFor="message">Message</label>
-                        <input type="text" id="message" placeholder="Text" className={Styles.messageBox}/>
+                        <input
+                          type="text"
+                          id="message"
+                          placeholder="Text"
+                          className={Styles.messageBox}
+                          onChange={(e) => {
+                            handleInputChange("message", e.target.value);
+                            checkAllFieldsFilled();
+                          }}
+                        />
                       </div>
+                      {allFieldsFilled && (
+                        <div className={Styles.popupTermsAndConditionsCheckBox}>
+                          <input type="checkbox" id="agreeToTerms" />
+                          <label htmlFor="agreeToTerms">I agree to the<span style={{ color: "red" }}>{" "}Property Management Terms and Conditions</span>
+                          </label>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </Popup>
