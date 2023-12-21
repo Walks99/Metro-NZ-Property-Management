@@ -18,18 +18,18 @@ function Navbar() {
     <div className={Styles.navBarContainer}>
       <img src={CompanyLogo} alt='Company logo' style={{width: "240px", height: "auto"}}/>
       <navbarlinks className={Styles.navLinkContainer}>
-        <NavLink to=""><span>Services</span></NavLink>
-        <NavLink to=""><span>About</span></NavLink>
-        <NavLink to=""><span>News</span></NavLink>
-        <NavLink to=""><span>Contact</span></NavLink>
+        <NavLink to="/services"><span>Services</span></NavLink>
+        <NavLink to="/about"><span>About</span></NavLink>
+        <NavLink to="/news"><span>News</span></NavLink>
+        <NavLink to="/contact"><span>Contact</span></NavLink>
 
         {isDropdownOpen ? (
           <>
-            <NavLink to="/dropdown-item-2">Tenants</NavLink>
-            <NavLink to="/dropdown-item-1">Property Listings</NavLink>
-            <NavLink to="/dropdown-item-2">We're Hiring</NavLink>
-            <NavLink to="/dropdown-item-1">Dispute Process</NavLink>
-            <NavLink to="/dropdown-item-1">Home</NavLink>
+            <NavLink to="/tenants">Tenants</NavLink>
+            <NavLink to="/propertylisting">Property Listings</NavLink>
+            <NavLink to="/we-are-hiring">We're Hiring</NavLink>
+            <NavLink to="/dispute-process">Dispute Process</NavLink>
+            <NavLink to="/">Home</NavLink>
 
              <Icon 
               icon={cross1} 

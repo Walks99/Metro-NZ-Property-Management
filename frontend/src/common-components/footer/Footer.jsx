@@ -25,7 +25,7 @@ function Footer() {
               <NavLink to="/"><span>Home</span></NavLink>
               <NavLink to="/tenants"><span>Tenants</span></NavLink>
               <NavLink to="/about"><span>About</span></NavLink>
-              <NavLink to="/property-listings"><span>Property Listings</span></NavLink>
+              <NavLink to="/propertyListing"><span>Property Listings</span></NavLink>
               <NavLink to="/we-are-hiring"><span>We're Hiring</span></NavLink>
               <NavLink to="/news"><span>News</span></NavLink>
               <NavLink to="/services"><span>Services</span></NavLink>
