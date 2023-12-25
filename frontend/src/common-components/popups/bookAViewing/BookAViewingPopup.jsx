@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import PrimaryButton from "../../buttons/PrimaryButton";
-import AgentPhoto from "../../../assets/agent-photos/agentPhoto.jpg";
+// import AgentPhoto from "../../../assets/agent-photos/agentPhoto.jpg";
 
 function ContactAgentPopup(props) {
 // ------------------------------------- CHECK T&C's HAVE BEEN AGREED TO ---------------------------------------
@@ -58,7 +58,7 @@ const handleSendButtonClick = () => {
           onClick={() => props.setTrigger(false)}
         ></FontAwesomeIcon>
         <div className={Styles.popupContainer}>
-          <div className={Styles.popupAgentImageAndInfoContainer}>
+          {/* <div className={Styles.popupAgentImageAndInfoContainer}>
             <div className={Styles.popupAgentImageContainer}>
               <img
                 src={AgentPhoto}
@@ -73,8 +73,16 @@ const handleSendButtonClick = () => {
                 +64 28 934 334
               </button>
             </div>
-          </div>
+          </div> */}
+          {/* <div className={Styles.bookAViewingheader}>
+            <h1>Book a viewing</h1>
+            <p>Enter your details to make a booking</p>
+          </div> */}
           <div className={Styles.popupContactAgentFormContainer}>
+            <div className={Styles.popupContactAgentFormHeader}>
+              <h1>Book a viewing</h1>
+              <p>Enter your contact details to book a viewing</p>
+            </div>
             <div className={Styles.popupContactAgentFormField}>
               <label htmlFor="fullName">Full Name</label>
               <input
