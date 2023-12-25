@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Styles from "./ChosenPropertyListing.module.scss";
 import Footer from "../../common-components/footer/Footer";
 import Navbar from "../../common-components/navbar/Navbar";
@@ -12,61 +12,61 @@ import PetsDefault from "../../assets/icons/PetsDefault.png";
 import PrimaryButton from "../../common-components/buttons/PrimaryButton";
 import SecondaryButton from "../../common-components/buttons/SecondaryButton";
 import AgentPhoto from "../../assets/agent-photos/agentPhoto.jpg";
-import Popup from "../../common-components/popups/Popup";
-import { useParams } from "react-router-dom";
+import PopupSkeleton from "../../common-components/popups/PopupSkeleton";
+// import { useParams } from "react-router-dom";
 
 function ChosenPropertyListing() {
-  const [properties, setProperties] = useState([])
-  const { id } = useParams();
+  // const [properties, setProperties] = useState([])
+  // const { id } = useParams();
   const [morePropertyDetails, setMorePropertyDetails] = useState(false);
   const [contactAgentPopup, setContactAgenctPopup] = useState(false);
-  const [bookNowPopup, setBookNewPopup] = useState(false);
-  const [
-    contactAgentPopupCheckboxSelected,
-    SetContactAgentPopupCheckboxSelected,
-  ] = useState(false);
+  // const [bookNowPopup, setBookNewPopup] = useState(false);
+  // const [
+  //   contactAgentPopupCheckboxSelected,
+  //   SetContactAgentPopupCheckboxSelected,
+  // ] = useState(false);
 
   const showMorePropertyDetails = () => {
     setMorePropertyDetails(!morePropertyDetails);
   };
 
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   fullName: "",
+  //   email: "",
+  //   phone: "",
+  //   message: "",
+  // });
 
-  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
+  // const [allFieldsFilled, setAllFieldsFilled] = useState(false);
 
-  const handleInputChange = (fieldName, value) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [fieldName]: value,
-    }));
-  };
+  // const handleInputChange = (fieldName, value) => {
+  //   setFormData((prevFormData) => ({
+  //     ...prevFormData,
+  //     [fieldName]: value,
+  //   }));
+  // };
 
-  const checkAllFieldsFilled = () => {
-    const filled = Object.values(formData).every(
-      (value) => value.trim() !== ""
-    );
-    setAllFieldsFilled(filled);
-  };
+  // const checkAllFieldsFilled = () => {
+  //   const filled = Object.values(formData).every(
+  //     (value) => value.trim() !== ""
+  //   );
+  //   setAllFieldsFilled(filled);
+  // };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:4000/api/retrieveproperties/${id}`
-        );
-        const requestedProperty = await response.json();
-        setProperties(requestedProperty);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [id]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `http://localhost:4000/api/retrieveproperties/${id}`
+  //       );
+  //       const requestedProperty = await response.json();
+  //       setProperties(requestedProperty);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [id]);
 
   return (
     <div className={Styles.chosenPropertyListingContainer}>
@@ -257,128 +257,20 @@ function ChosenPropertyListing() {
                   height={"40px"}
                   onClick={() => setContactAgenctPopup(true)}
                 />
-                <Popup
+                <PopupSkeleton
                   trigger={contactAgentPopup}
                   setTrigger={setContactAgenctPopup}
-                >
-                  <div className={Styles.popupContainer}>
-                    <div className={Styles.popupAgentImageAndInfoContainer}>
-                      <div className={Styles.popupAgentImageContainer}>
-                        <img
-                          src={AgentPhoto}
-                          alt="Property agent"
-                          className={Styles.popupAgentPhoto}
-                        />
-                      </div>
-                      <div className={Styles.popupAgentinfoContainer}>
-                        <p style={{ fontWeight: "bold", fontSize: "18px" }}>
-                          Penny Rose
-                        </p>
-                        <p style={{ fontSize: "14px" }}>Residential Rentals</p>
-                        <button className={Styles.popupCallAgentButton}>
-                          +64 28 934 334
-                        </button>
-                      </div>
-                    </div>
-                    <div className={Styles.popupContactAgentFormContainer}>
-                      <div className={Styles.popupContactAgentFormField}>
-                        <label htmlFor="fullName">Full Name</label>
-                        <input
-                          type="text"
-                          id="fullName"
-                          placeholder="Text"
-                          onChange={(e) => {
-                            handleInputChange("fullName", e.target.value);
-                            checkAllFieldsFilled();
-                          }}
-                        />
-                      </div>
-                      <div className={Styles.popupContactAgentFormField}>
-                        <label htmlFor="email">Email</label>
-                        <input
-                          type="text"
-                          id="email"
-                          placeholder="Text"
-                          onChange={(e) => {
-                            handleInputChange("email", e.target.value);
-                            checkAllFieldsFilled();
-                          }}
-                        />
-                      </div>
-                      <div className={Styles.popupContactAgentFormField}>
-                        <label htmlFor="phone">Phone</label>
-                        <input
-                          type="text"
-                          id="phone"
-                          placeholder="Text"
-                          onChange={(e) => {
-                            handleInputChange("phone", e.target.value);
-                            checkAllFieldsFilled();
-                          }}
-                        />
-                      </div>
-                      <div className={Styles.popupContactAgentFormField}>
-                        <label htmlFor="message">Message</label>
-                        <input
-                          type="text"
-                          id="message"
-                          placeholder="Text"
-                          className={Styles.messageBox}
-                          onChange={(e) => {
-                            handleInputChange("message", e.target.value);
-                            checkAllFieldsFilled();
-                          }}
-                        />
-                      </div>
-                      <div>
-                        {allFieldsFilled && (
-                          <div
-                            className={Styles.popupTermsAndConditionsCheckBox}
-                          >
-                            <input
-                              type="checkbox"
-                              id="agreeToTerms"
-                              onChange={() =>
-                                SetContactAgentPopupCheckboxSelected(
-                                  !contactAgentPopupCheckboxSelected
-                                )
-                              }
-                            />
-                            <label htmlFor="agreeToTerms">
-                              I agree to the
-                              <span style={{ color: "red" }}>
-                                {" "}
-                                Property Management Terms and Conditions
-                              </span>
-                            </label>
-                          </div>
-                        )}
-                      </div>
-                      <div className={Styles.bookViewingButtonContainer}>
-                        {contactAgentPopupCheckboxSelected && (
-                          <PrimaryButton
-                            displayText="Send"
-                            width={"100%"}
-                            height={"40px"}
-                            marginTop={"6%"}
-                            onClick={() =>
-                              setContactAgenctPopup(!contactAgentPopup)
-                            }
-                          />
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </Popup>
+                />
+
                 <PrimaryButton
                   displayText="Enquire"
                   width={"45%"}
                   height={"40px"}
                   onClick={() => setContactAgenctPopup(!contactAgentPopup)}
                 />
-                <Popup trigger={bookNowPopup} setTrigger={setBookNewPopup}>
+                {/* <Popup trigger={bookNowPopup} setTrigger={setBookNewPopup}>
                   <h1>BOOK NOW POPUP</h1>
-                </Popup>
+                </Popup> */}
               </div>
             </div>
           </div>
