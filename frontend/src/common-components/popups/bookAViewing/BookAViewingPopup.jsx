@@ -3,8 +3,8 @@ import Styles from "./BookAViewingPopup.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import PrimaryButton from "../buttons/PrimaryButton";
-import AgentPhoto from "../../assets/agent-photos/agentPhoto.jpg";
+import PrimaryButton from "../../buttons/PrimaryButton";
+import AgentPhoto from "../../../assets/agent-photos/agentPhoto.jpg";
 
 function ContactAgentPopup(props) {
   const [contactAgentPopupCheckboxSelected, SetContactAgentPopupCheckboxSelected] = useState(false);
