@@ -10,14 +10,14 @@ function ContactAgentPopup(props) {
 // ---------------------------------------------- STATE VARIABLES ----------------------------------------------
   const [contactAgentPopupCheckboxSelected, SetContactAgentPopupCheckboxSelected] = useState(false);
   const [allFieldsFilled, setAllFieldsFilled] = useState(false);
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// --------------------------------------------------- LOGIC ---------------------------------------------------
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     message: "",
   });
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// --------------------------------------------------- LOGIC ---------------------------------------------------
 
 
   const handleInputChange = (fieldName, value) => {

@@ -10,14 +10,14 @@ function EnquirePopup(props) {
 // ---------------------------------------------- STATE VARIABLES ----------------------------------------------
   const [enquirePopupCheckboxSelected, SetEnquirePopupCheckboxSelected] = useState(false);
   const [allFieldsFilled, setAllFieldsFilled] = useState(false);
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// --------------------------------------------------- LOGIC ---------------------------------------------------
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     message: "",
   });
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// --------------------------------------------------- LOGIC ---------------------------------------------------
 
   const handleInputChange = (fieldName, value) => {
     setFormData((prevFormData) => ({
