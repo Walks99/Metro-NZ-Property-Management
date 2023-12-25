@@ -7,8 +7,11 @@ import PrimaryButton from "../../buttons/PrimaryButton";
 import AgentPhoto from "../../../assets/agent-photos/agentPhoto.jpg";
 
 function ContactAgentPopup(props) {
+// ---------------------------------------------- STATE VARIABLES ----------------------------------------------
   const [contactAgentPopupCheckboxSelected, SetContactAgentPopupCheckboxSelected] = useState(false);
-
+  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// --------------------------------------------------- LOGIC ---------------------------------------------------
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -16,7 +19,6 @@ function ContactAgentPopup(props) {
     message: "",
   });
 
-  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
 
   const handleInputChange = (fieldName, value) => {
     setFormData((prevFormData) => ({
@@ -31,6 +33,7 @@ function ContactAgentPopup(props) {
     );
     setAllFieldsFilled(filled);
   };
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   return props.trigger ? (
     <div className={Styles.popup}>
