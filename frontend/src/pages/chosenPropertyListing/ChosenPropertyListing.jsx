@@ -12,7 +12,7 @@ import PetsDefault from "../../assets/icons/PetsDefault.png";
 import PrimaryButton from "../../common-components/buttons/PrimaryButton";
 import SecondaryButton from "../../common-components/buttons/SecondaryButton";
 import AgentPhoto from "../../assets/agent-photos/agentPhoto.jpg";
-import PopupSkeleton from "../../common-components/popups/bookAViewing/BookAViewingPopup";
+import BookAViewingPopup from "../../common-components/popups/bookAViewing/BookAViewingPopup";
 // import { useParams } from "react-router-dom";
 
 function ChosenPropertyListing() {
@@ -257,7 +257,7 @@ function ChosenPropertyListing() {
                   height={"40px"}
                   onClick={() => setContactAgenctPopup(true)}
                 />
-                <PopupSkeleton
+                <BookAViewingPopup
                   trigger={contactAgentPopup}
                   setTrigger={setContactAgenctPopup}
                 />
