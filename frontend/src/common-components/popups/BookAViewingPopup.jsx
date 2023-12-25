@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "./PopupSkeleton.module.scss";
+import Styles from "./BookAViewingPopup.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
