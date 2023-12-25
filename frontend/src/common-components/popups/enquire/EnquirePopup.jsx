@@ -2,22 +2,22 @@ import React from "react";
 import Styles from "./EnquirePopup.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PrimaryButton from "../../buttons/PrimaryButton";
 import AgentPhoto from "../../../assets/agent-photos/agentPhoto.jpg";
 
 function EnquirePopup(props) {
-// ---------------------------------------------- STATE VARIABLES ----------------------------------------------
+// ------------------------------------- CHECK T&C's HAVE BEEN AGREED TO ---------------------------------------
   const [enquirePopupCheckboxSelected, SetEnquirePopupCheckboxSelected] = useState(false);
-  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// --------------------------------------------------- LOGIC ---------------------------------------------------
+// -------------------------------- CHECK ALL FORM FIELDS HAVE BEEN COMPLETED ----------------------------------
+const [allFieldsFilled, setAllFieldsFilled] = useState(false);
+const [formData, setFormData] = useState({
+  fullName: "",
+  email: "",
+  phone: "",
+  message: "",
+});
 
   const handleInputChange = (fieldName, value) => {
     setFormData((prevFormData) => ({
@@ -33,6 +33,21 @@ function EnquirePopup(props) {
     setAllFieldsFilled(filled);
   };
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  // -------------------------------------- REFRESH PAGE WHEN SEND BUTTON CLICKED --------------------------------
+const [sendButtonClicked, setSendButtonClicked] = useState(false);
+
+useEffect(() => {
+  if (sendButtonClicked) {
+    window.location.reload();
+  }
+
+  setSendButtonClicked(false);
+}, [sendButtonClicked]);
+
+const handleSendButtonClick = () => {
+  setSendButtonClicked(true);
+};
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   return props.trigger ? (
     <div className={Styles.popup}>
@@ -138,7 +153,7 @@ function EnquirePopup(props) {
                   width={"100%"}
                   height={"40px"}
                   marginTop={"6%"}
-                  onClick={() => props.setTrigger(false)}
+                  onClick={handleSendButtonClick}
                 />
               )}
             </div>
