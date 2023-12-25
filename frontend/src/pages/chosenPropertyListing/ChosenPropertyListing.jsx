@@ -13,6 +13,7 @@ import PrimaryButton from "../../common-components/buttons/PrimaryButton";
 import SecondaryButton from "../../common-components/buttons/SecondaryButton";
 import AgentPhoto from "../../assets/agent-photos/agentPhoto.jpg";
 import BookAViewingPopup from "../../common-components/popups/bookAViewing/BookAViewingPopup";
+import EnquirePopup from "../../common-components/popups/enquire/EnquirePopup";
 // import { useParams } from "react-router-dom";
 
 function ChosenPropertyListing() {
@@ -20,38 +21,12 @@ function ChosenPropertyListing() {
   // const { id } = useParams();
   const [morePropertyDetails, setMorePropertyDetails] = useState(false);
   const [contactAgentPopup, setContactAgenctPopup] = useState(false);
+  const [enquirePopup, setEnquirePopup] = useState(false);
   // const [bookNowPopup, setBookNewPopup] = useState(false);
-  // const [
-  //   contactAgentPopupCheckboxSelected,
-  //   SetContactAgentPopupCheckboxSelected,
-  // ] = useState(false);
 
   const showMorePropertyDetails = () => {
     setMorePropertyDetails(!morePropertyDetails);
   };
-
-  // const [formData, setFormData] = useState({
-  //   fullName: "",
-  //   email: "",
-  //   phone: "",
-  //   message: "",
-  // });
-
-  // const [allFieldsFilled, setAllFieldsFilled] = useState(false);
-
-  // const handleInputChange = (fieldName, value) => {
-  //   setFormData((prevFormData) => ({
-  //     ...prevFormData,
-  //     [fieldName]: value,
-  //   }));
-  // };
-
-  // const checkAllFieldsFilled = () => {
-  //   const filled = Object.values(formData).every(
-  //     (value) => value.trim() !== ""
-  //   );
-  //   setAllFieldsFilled(filled);
-  // };
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -266,11 +241,12 @@ function ChosenPropertyListing() {
                   displayText="Enquire"
                   width={"45%"}
                   height={"40px"}
-                  onClick={() => setContactAgenctPopup(!contactAgentPopup)}
+                  onClick={() => setEnquirePopup(true)}
                 />
-                {/* <Popup trigger={bookNowPopup} setTrigger={setBookNewPopup}>
-                  <h1>BOOK NOW POPUP</h1>
-                </Popup> */}
+                <EnquirePopup 
+                trigger={enquirePopup}
+                setTrigger={setEnquirePopup}
+                />
               </div>
             </div>
           </div>

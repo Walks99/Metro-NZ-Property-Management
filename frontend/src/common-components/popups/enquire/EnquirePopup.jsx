@@ -7,16 +7,17 @@ import PrimaryButton from "../../buttons/PrimaryButton";
 import AgentPhoto from "../../../assets/agent-photos/agentPhoto.jpg";
 
 function EnquirePopup(props) {
-  const [contactAgentPopupCheckboxSelected, SetContactAgentPopupCheckboxSelected] = useState(false);
-
+// ---------------------------------------------- STATE VARIABLES ----------------------------------------------
+  const [enquirePopupCheckboxSelected, SetEnquirePopupCheckboxSelected] = useState(false);
+  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// --------------------------------------------------- LOGIC ---------------------------------------------------
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     message: "",
   });
-
-  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
 
   const handleInputChange = (fieldName, value) => {
     setFormData((prevFormData) => ({
@@ -31,6 +32,7 @@ function EnquirePopup(props) {
     );
     setAllFieldsFilled(filled);
   };
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   return props.trigger ? (
     <div className={Styles.popup}>
@@ -50,7 +52,7 @@ function EnquirePopup(props) {
               />
             </div>
             <div className={Styles.popupAgentinfoContainer}>
-              <p style={{ fontWeight: "bold", fontSize: "18px" }}>Penny Rose</p>
+              <p style={{ fontWeight: "bold", fontSize: "18px" }}>Penny Rose $</p>
               <p style={{ fontSize: "14px" }}>Residential Rentals</p>
               <button className={Styles.popupCallAgentButton}>
                 +64 28 934 334
@@ -114,8 +116,8 @@ function EnquirePopup(props) {
                     type="checkbox"
                     id="agreeToTerms"
                     onChange={() =>
-                      SetContactAgentPopupCheckboxSelected(
-                        !contactAgentPopupCheckboxSelected
+                      SetEnquirePopupCheckboxSelected(
+                        !enquirePopupCheckboxSelected
                       )
                     }
                   />
@@ -130,7 +132,7 @@ function EnquirePopup(props) {
               )}
             </div>
             <div className={Styles.bookViewingButtonContainer}>
-              {contactAgentPopupCheckboxSelected && (
+              {enquirePopupCheckboxSelected && (
                 <PrimaryButton
                   displayText="Send"
                   width={"100%"}
