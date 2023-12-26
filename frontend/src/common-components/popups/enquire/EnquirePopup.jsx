@@ -7,17 +7,18 @@ import PrimaryButton from "../../buttons/PrimaryButton";
 import AgentPhoto from "../../../assets/agent-photos/agentPhoto.jpg";
 
 function EnquirePopup(props) {
-// ------------------------------------- CHECK T&C's HAVE BEEN AGREED TO ---------------------------------------
-  const [enquirePopupCheckboxSelected, SetEnquirePopupCheckboxSelected] = useState(false);
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// -------------------------------- CHECK ALL FORM FIELDS HAVE BEEN COMPLETED ----------------------------------
-const [allFieldsFilled, setAllFieldsFilled] = useState(false);
-const [formData, setFormData] = useState({
-  fullName: "",
-  email: "",
-  phone: "",
-  message: "",
-});
+  // ------------------------------------- CHECK T&C's HAVE BEEN AGREED TO ---------------------------------------
+  const [enquirePopupCheckboxSelected, SetEnquirePopupCheckboxSelected] =
+    useState(false);
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  // -------------------------------- CHECK ALL FORM FIELDS HAVE BEEN COMPLETED ----------------------------------
+  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
   const handleInputChange = (fieldName, value) => {
     setFormData((prevFormData) => ({
@@ -34,30 +35,33 @@ const [formData, setFormData] = useState({
   };
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   // -------------------------------------- REFRESH PAGE WHEN SEND BUTTON CLICKED --------------------------------
-const [sendButtonClicked, setSendButtonClicked] = useState(false);
+  const [sendButtonClicked, setSendButtonClicked] = useState(false);
 
-useEffect(() => {
-  if (sendButtonClicked) {
-    window.location.reload();
-  }
+  useEffect(() => {
+    if (sendButtonClicked) {
+      window.location.reload();
+    }
 
-  setSendButtonClicked(false);
-}, [sendButtonClicked]);
+    setSendButtonClicked(false);
+  }, [sendButtonClicked]);
 
-const handleSendButtonClick = () => {
-  setSendButtonClicked(true);
-};
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  const handleSendButtonClick = () => {
+    setSendButtonClicked(true);
+  };
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   return props.trigger ? (
     <div className={Styles.popup}>
       <div className={Styles.popupInner}>
+        {/* ------------------------------------------------ CLOSE POPUP WINDOW ICON ------------------------------------------ */}
         <FontAwesomeIcon
           icon={faXmark}
           className={Styles.closeButton}
           onClick={() => props.setTrigger(false)}
         ></FontAwesomeIcon>
+        {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
         <div className={Styles.popupContainer}>
+          {/* ----------------------------------- LISTING AGENT CONTACT DETAILS AND PERSONAL PHOTO ---------------------------- */}
           <div className={Styles.popupAgentImageAndInfoContainer}>
             <div className={Styles.popupAgentImageContainer}>
               <img
@@ -67,14 +71,18 @@ const handleSendButtonClick = () => {
               />
             </div>
             <div className={Styles.popupAgentinfoContainer}>
-              <p style={{ fontWeight: "bold", fontSize: "18px" }}>Penny Rose $</p>
+              <p style={{ fontWeight: "bold", fontSize: "18px" }}>
+                Penny Rose $
+              </p>
               <p style={{ fontSize: "14px" }}>Residential Rentals</p>
               <button className={Styles.popupCallAgentButton}>
                 +64 28 934 334
               </button>
             </div>
           </div>
+          {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
           <div className={Styles.popupContactAgentFormContainer}>
+            {/* --------------------------------------------- FORM INPUT FIELDS --------------------------------------------- */}
             <div className={Styles.popupContactAgentFormField}>
               <label htmlFor="fullName">Full Name</label>
               <input
@@ -124,6 +132,8 @@ const handleSendButtonClick = () => {
                 }}
               />
             </div>
+            {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+            {/* ------------------------ IF ALL INPUT FIELDS HAVE BEEN COMPLETED, RENDER THE T&Cs CHECKBOX -------------------- */}
             <div>
               {allFieldsFilled && (
                 <div className={Styles.popupTermsAndConditionsCheckBox}>
@@ -146,10 +156,12 @@ const handleSendButtonClick = () => {
                 </div>
               )}
             </div>
+            {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+            {/* ------------------ IF THE T&C's CHECKBOX HAS BEEN SELECTED, RENDER THE 'SEND ENQUIRY' BUTTON ------------------ */}
             <div className={Styles.bookViewingButtonContainer}>
               {enquirePopupCheckboxSelected && (
                 <PrimaryButton
-                  displayText="Send"
+                  displayText="Send eqnuiry"
                   width={"100%"}
                   height={"40px"}
                   marginTop={"6%"}
@@ -157,6 +169,7 @@ const handleSendButtonClick = () => {
                 />
               )}
             </div>
+            {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
           </div>
         </div>
       </div>

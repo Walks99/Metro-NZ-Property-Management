@@ -4,145 +4,114 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import PrimaryButton from "../../buttons/PrimaryButton";
-// import AgentPhoto from "../../../assets/agent-photos/agentPhoto.jpg";
 
 function ContactAgentPopup(props) {
-// ------------------------------------- CHECK T&C's HAVE BEEN AGREED TO ---------------------------------------
-  const [contactAgentPopupCheckboxSelected, SetContactAgentPopupCheckboxSelected] = useState(false);
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// -------------------------------- CHECK ALL FORM FIELDS HAVE BEEN COMPLETED ----------------------------------
-const [allFieldsFilled, setAllFieldsFilled] = useState(false);
-const [formData, setFormData] = useState({
-  fullName: "",
-  email: "",
-  phone: "",
-  message: "",
-});
+  // ------------------------------------- CHECK T&C's HAVE BEEN AGREED TO ---------------------------------------
+  const [
+    contactAgentPopupCheckboxSelected,
+    SetContactAgentPopupCheckboxSelected,
+  ] = useState(false);
 
-  const handleInputChange = (fieldName, value) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [fieldName]: value,
-    }));
+  const hangleTermsAndConditionsCheckboxChange = () => {
+    SetContactAgentPopupCheckboxSelected(!contactAgentPopupCheckboxSelected);
+  };
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  // --------------------------- CHECK BOOKING DATE AND TIME HAVE BEEN SELECTED ----------------------------------
+  const [bookingDateSelected, setBookingDateSelected] = useState(false);
+  const [bookingTimeSelected, setBookingTimeSelected] = useState(false);
+  const [bookingDateAndTimeSelected, setBookingDateAndTimeSelected] =
+    useState(false);
+
+  const handleBookingDateChange = () => {
+    setBookingDateSelected(!bookingDateSelected);
   };
 
-  const checkAllFieldsFilled = () => {
-    const filled = Object.values(formData).every(
-      (value) => value.trim() !== ""
-    );
-    setAllFieldsFilled(filled);
+  const handleBookingTimeChange = () => {
+    setBookingTimeSelected(!bookingTimeSelected);
   };
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// -------------------------------------- REFRESH PAGE WHEN SEND BUTTON CLICKED --------------------------------
-const [sendButtonClicked, setSendButtonClicked] = useState(false);
 
-useEffect(() => {
-  if (sendButtonClicked) {
-    window.location.reload();
-  }
+  useEffect(() => {
+    if (bookingDateSelected && bookingTimeSelected) {
+      setBookingDateAndTimeSelected(true);
+    } else {
+      setBookingDateAndTimeSelected(false);
+    }
+  }, [bookingDateSelected, bookingTimeSelected]);
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  // -------------------------------------- REFRESH PAGE WHEN SEND BUTTON CLICKED --------------------------------
+  const [sendButtonClicked, setSendButtonClicked] = useState(false);
 
-  setSendButtonClicked(false);
-}, [sendButtonClicked]);
+  useEffect(() => {
+    if (sendButtonClicked) {
+      window.location.reload();
+    }
 
-const handleSendButtonClick = () => {
-  setSendButtonClicked(true);
-};
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    setSendButtonClicked(false);
+  }, [sendButtonClicked]);
+
+  const handleSendButtonClick = () => {
+    setSendButtonClicked(true);
+  };
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   return props.trigger ? (
     <div className={Styles.popup}>
       <div className={Styles.popupInner}>
+        {/* ------------------------------------------------ CLOSE POPUP WINDOW ICON ------------------------------------------ */}
         <FontAwesomeIcon
           icon={faXmark}
           className={Styles.closeButton}
           onClick={() => props.setTrigger(false)}
         ></FontAwesomeIcon>
+        {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
         <div className={Styles.popupContainer}>
-          {/* <div className={Styles.popupAgentImageAndInfoContainer}>
-            <div className={Styles.popupAgentImageContainer}>
-              <img
-                src={AgentPhoto}
-                alt="Property agent"
-                className={Styles.popupAgentPhoto}
-              />
-            </div>
-            <div className={Styles.popupAgentinfoContainer}>
-              <p style={{ fontWeight: "bold", fontSize: "18px" }}>Penny Rose</p>
-              <p style={{ fontSize: "14px" }}>Residential Rentals</p>
-              <button className={Styles.popupCallAgentButton}>
-                +64 28 934 334
-              </button>
-            </div>
-          </div> */}
-          {/* <div className={Styles.bookAViewingheader}>
-            <h1>Book a viewing</h1>
-            <p>Enter your details to make a booking</p>
-          </div> */}
           <div className={Styles.popupContactAgentFormContainer}>
+            {/* ---------------------------------------- BOOK A VIEWING POPUP HEADER --------------------------------------------- */}
             <div className={Styles.popupContactAgentFormHeader}>
               <h1>Book a viewing</h1>
-              <p>Enter your contact details to book a viewing</p>
+              <p>Select a time and date to view the property</p>
             </div>
-            <div className={Styles.popupContactAgentFormField}>
-              <label htmlFor="fullName">Full Name</label>
-              <input
-                type="text"
-                id="fullName"
-                placeholder="Text"
-                onChange={(e) => {
-                  handleInputChange("fullName", e.target.value);
-                  checkAllFieldsFilled();
-                }}
-              />
+            {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+            {/* ---------------------------------------- BOOK A DATE CONTAINER ------------------------------------------------- */}
+            <div className={Styles.bookDateContainer}>
+              <h3>Available date</h3>
+              <div className={Styles.popupTermsAndConditionsCheckBox}>
+                <input
+                  type="checkbox"
+                  id="bookingDate"
+                  name="date"
+                  onChange={() => {
+                    handleBookingDateChange();
+                  }}
+                />
+                <label htmlFor="bookingDate">day/month/year</label>
+              </div>
             </div>
-            <div className={Styles.popupContactAgentFormField}>
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                id="email"
-                placeholder="Text"
-                onChange={(e) => {
-                  handleInputChange("email", e.target.value);
-                  checkAllFieldsFilled();
-                }}
-              />
+            {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+            {/* ---------------------------------------- BOOK A TIME CONTAINER ------------------------------------------------- */}
+            <div className={Styles.bookTimeContainer}>
+              <h3>Available time</h3>
+              <div className={Styles.popupTermsAndConditionsCheckBox}>
+                <input
+                  type="checkbox"
+                  name="time"
+                  id="bookingTime"
+                  onChange={() => {
+                    handleBookingTimeChange();
+                  }}
+                />
+                <label htmlFor="bookingTime">time</label>
+              </div>
             </div>
-            <div className={Styles.popupContactAgentFormField}>
-              <label htmlFor="phone">Phone</label>
-              <input
-                type="text"
-                id="phone"
-                placeholder="Text"
-                onChange={(e) => {
-                  handleInputChange("phone", e.target.value);
-                  checkAllFieldsFilled();
-                }}
-              />
-            </div>
-            <div className={Styles.popupContactAgentFormField}>
-              <label htmlFor="message">Message</label>
-              <input
-                type="text"
-                id="message"
-                placeholder="Text"
-                className={Styles.messageBox}
-                onChange={(e) => {
-                  handleInputChange("message", e.target.value);
-                  checkAllFieldsFilled();
-                }}
-              />
-            </div>
+            {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+            {/* ------------------------- IF DATE AND TIME SELECTED, SHOW T&Cs CHECKBOX ----------------------------------------- */}
             <div>
-              {allFieldsFilled && (
+              {bookingDateAndTimeSelected && (
                 <div className={Styles.popupTermsAndConditionsCheckBox}>
                   <input
                     type="checkbox"
                     id="agreeToTerms"
-                    onChange={() =>
-                      SetContactAgentPopupCheckboxSelected(
-                        !contactAgentPopupCheckboxSelected
-                      )
-                    }
+                    onChange={hangleTermsAndConditionsCheckboxChange}
                   />
                   <label htmlFor="agreeToTerms">
                     I agree to the
@@ -154,10 +123,12 @@ const handleSendButtonClick = () => {
                 </div>
               )}
             </div>
+            {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+            {/* ----------------------- IF T&Cs CHECKBOX IS TICKED, SHOW 'CONFIRM BOOKING' BUTTON  ------------------------------ */}
             <div className={Styles.bookViewingButtonContainer}>
               {contactAgentPopupCheckboxSelected && (
                 <PrimaryButton
-                  displayText="Send"
+                  displayText="Confirm booking"
                   width={"100%"}
                   height={"40px"}
                   marginTop={"6%"}
@@ -165,6 +136,7 @@ const handleSendButtonClick = () => {
                 />
               )}
             </div>
+            {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
           </div>
         </div>
       </div>
