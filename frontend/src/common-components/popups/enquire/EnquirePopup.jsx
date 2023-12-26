@@ -161,7 +161,7 @@ function EnquirePopup(props) {
             <div className={Styles.bookViewingButtonContainer}>
               {enquirePopupCheckboxSelected && (
                 <PrimaryButton
-                  displayText="Send eqnuiry"
+                  displayText="Send enquiry"
                   width={"100%"}
                   height={"40px"}
                   marginTop={"6%"}
