@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Styles from "./ChosenPropertyListing.module.scss";
 import Footer from "../../common-components/footer/Footer";
 import Navbar from "../../common-components/navbar/Navbar";
@@ -14,129 +14,80 @@ import SecondaryButton from "../../common-components/buttons/SecondaryButton";
 import AgentPhoto from "../../assets/agent-photos/agentPhoto.jpg";
 import BookAViewingPopup from "../../common-components/popups/bookAViewing/BookAViewingPopup";
 import EnquirePopup from "../../common-components/popups/enquire/EnquirePopup";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 function ChosenPropertyListing() {
+  // const [properties, setProperties] = useState([])
+  // const { id } = useParams();
   const [morePropertyDetails, setMorePropertyDetails] = useState(false);
   const [contactAgentPopup, setContactAgenctPopup] = useState(false);
   const [enquirePopup, setEnquirePopup] = useState(false);
+  // const [bookNowPopup, setBookNewPopup] = useState(false);
 
   const showMorePropertyDetails = () => {
     setMorePropertyDetails(!morePropertyDetails);
   };
 
-// ------------------------------------------------------------------------------------------------------------------------------------------------
-  const [properties, setProperties] = useState([])
-  const { id } = useParams();
-  const [bookNowPopup, setBookNewPopup] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:4000/api/retrieveproperties/${id}`
-        );
-        const requestedProperty = await response.json();
-        setProperties(requestedProperty);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [id]);
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `http://localhost:4000/api/retrieveproperties/${id}`
+  //       );
+  //       const requestedProperty = await response.json();
+  //       setProperties(requestedProperty);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [id]);
 
   return (
     <div className={Styles.chosenPropertyListingContainer}>
       <Navbar />
-
-      {properties.map((property) => (
-                <propertyimages className={Styles.propertyImagesContainer}>
-                <img
-                  className={Styles.mainImage}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/3-amano-avenue-epsom-auckland/2081897491.jpg"
-                  }
-                  alt="Main of property"
-                />
-                <img
-                  className={Styles.additionalImage}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/3-amano-avenue-epsom-auckland/2081897497.jpg"
-                  }
-                  alt="Main of property"
-                />
-                <img
-                  className={Styles.additionalImage}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/3-amano-avenue-epsom-auckland/2081897504.jpg"
-                  }
-                  alt="Main of property"
-                />
-                <img
-                  className={Styles.additionalImage}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/3-amano-avenue-epsom-auckland/2081897505.jpg"
-                  }
-                  alt="Main of property"
-                />
-                <img
-                  className={Styles.additionalImage}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/3-amano-avenue-epsom-auckland/2081897507.jpg"
-                  }
-                  alt="Main of property"
-                />
-              </propertyimages>
-      );
-
-      // <propertyimages className={Styles.propertyImagesContainer}>
-      //   <img
-      //     className={Styles.mainImage}
-      //     src={
-      //       process.env.PUBLIC_URL +
-      //       "/images/3-amano-avenue-epsom-auckland/2081897491.jpg"
-      //     }
-      //     alt="Main of property"
-      //   />
-      //   <img
-      //     className={Styles.additionalImage}
-      //     src={
-      //       process.env.PUBLIC_URL +
-      //       "/images/3-amano-avenue-epsom-auckland/2081897497.jpg"
-      //     }
-      //     alt="Main of property"
-      //   />
-      //   <img
-      //     className={Styles.additionalImage}
-      //     src={
-      //       process.env.PUBLIC_URL +
-      //       "/images/3-amano-avenue-epsom-auckland/2081897504.jpg"
-      //     }
-      //     alt="Main of property"
-      //   />
-      //   <img
-      //     className={Styles.additionalImage}
-      //     src={
-      //       process.env.PUBLIC_URL +
-      //       "/images/3-amano-avenue-epsom-auckland/2081897505.jpg"
-      //     }
-      //     alt="Main of property"
-      //   />
-      //   <img
-      //     className={Styles.additionalImage}
-      //     src={
-      //       process.env.PUBLIC_URL +
-      //       "/images/3-amano-avenue-epsom-auckland/2081897507.jpg"
-      //     }
-      //     alt="Main of property"
-      //   />
-      // </propertyimages>
+      <propertyimages className={Styles.propertyImagesContainer}>
+        <img
+          className={Styles.mainImage}
+          src={
+            process.env.PUBLIC_URL +
+            "/images/3-amano-avenue-epsom-auckland/2081897491.jpg"
+          }
+          alt="Main of property"
+        />
+        <img
+          className={Styles.additionalImage}
+          src={
+            process.env.PUBLIC_URL +
+            "/images/3-amano-avenue-epsom-auckland/2081897497.jpg"
+          }
+          alt="Main of property"
+        />
+        <img
+          className={Styles.additionalImage}
+          src={
+            process.env.PUBLIC_URL +
+            "/images/3-amano-avenue-epsom-auckland/2081897504.jpg"
+          }
+          alt="Main of property"
+        />
+        <img
+          className={Styles.additionalImage}
+          src={
+            process.env.PUBLIC_URL +
+            "/images/3-amano-avenue-epsom-auckland/2081897505.jpg"
+          }
+          alt="Main of property"
+        />
+        <img
+          className={Styles.additionalImage}
+          src={
+            process.env.PUBLIC_URL +
+            "/images/3-amano-avenue-epsom-auckland/2081897507.jpg"
+          }
+          alt="Main of property"
+        />
+      </propertyimages>
 
       <propertydetailscontainer className={Styles.propertyDetailsContainer}>
         <propertydetails className={Styles.propertyDetails}>
