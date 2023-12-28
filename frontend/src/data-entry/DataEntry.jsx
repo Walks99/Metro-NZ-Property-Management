@@ -8,7 +8,7 @@ function DataEntry() {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
   const [images, setImages] = useState();
   const [imagePath, setImagePath] = useState('');
-  console.log(imagePath);
+  // const [imageDeletedMessage, setImageDeletedMessage] = useState('');
 
   // ------------------------------------- FUNCTION FOR UPLOADING DOCUMENTS TO DATABASE -------------------------------------
   const makeHttpRequest = async (e) => {
@@ -66,7 +66,6 @@ function DataEntry() {
           const data = await response.json();
           setSuccessMessage(data.message); // Set success message from the server
           // Clear the input field after successful upload
-          // inputElement.value = "";
           listingDetails.listingTitle.value = "";
           listingDetails.listingDescription.value = "";
           listingDetails.propertyType.value = "";
@@ -185,6 +184,23 @@ function DataEntry() {
       console.error("Frontend Error - displayImage function:", error.message);
      }
     }
+
+    // const deleteImage = () => {
+    //   console.log("deleteImage function hit");
+    //   const imageToDelete = imagePath;
+    //     try {
+    //       fetch(`http://localhost:4000/api/deleteImage${imageToDelete}`, {
+    //         method: "DELETE",
+    //       })
+    //       .then(response => setImageDeletedMessage(response.message))
+    //       .then(
+    //         setImagePath('')
+    //       )
+
+    //     } catch (error) {
+    //       console.error("Frontend Error - deleteImage function:", error.message);
+    //     }
+    // }
     
   // ---------------------------------- RETURN STATEMENTS --------------------------------------
   return (
@@ -322,12 +338,13 @@ function DataEntry() {
                     <br />
                     {document.images.length > 0 && (
                       <div>
-                        <b>Image paths:</b>
+                        <b>Images and paths:</b>
                         {document.images.map((image) => {
                           return (
-                            <div key={image.path}>
-                              {JSON.stringify(image.path)}
+                            <div key={image.path} style={{display: "flex", flexDirection: "column"}}>
                               <br />
+                              {JSON.stringify(image.path)}
+                              <img src={`http://localhost:4000${image.path}`} alt="Uploaded" style={{width: "400px", height: "auto"}}/>
                             </div>
                           );
                         })}
@@ -362,7 +379,9 @@ function DataEntry() {
 
       {/* Display image */}
       <button onClick={displayImage}>Display image</button>
+      {/* <button onClick={deleteImage}>Delete image</button> */}
       {imagePath && <img src={`http://localhost:4000${imagePath}`} alt="Uploaded" />}
+      {/* {imageDeletedMessage && <p>{imageDeletedMessage}</p>} */}
       </>
   );
 }
