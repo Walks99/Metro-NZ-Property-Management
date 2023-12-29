@@ -330,6 +330,10 @@ function DataEntry() {
                     <br />
                     <b>Carparks:</b> {JSON.stringify(document.carparks)}
                     <br />
+                    <b>Property features:</b> {JSON.stringify(document.propertyFeatures)}
+                    <br />
+                    <b>Additional Information:</b> {JSON.stringify(document.additionalInformation)}
+                    <br />
                     <b>Pets allowed:</b> {JSON.stringify(document.petsAllowed)}
                     <br />
                     <b>Country:</b> {JSON.stringify(document.country)}
