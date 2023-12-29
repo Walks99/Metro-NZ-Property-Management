@@ -64,6 +64,8 @@ const documentSchema = new mongoose.Schema({
   bedrooms: Number,
   bathrooms: Number,
   carparks: Number,
+  propertyFeatures: String,
+  additionalInformation: String,
   petsAllowed: Boolean,
   country: String,
   city: String,
