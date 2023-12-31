@@ -99,7 +99,8 @@ function ChosenPropertyListing() {
               </propertyicons>
 
               <p style={{ fontWeight: "bold", marginTop: "10px" }}>
-                {property.streetNumber} {property.street}, {property.suburb}<br />
+                {property.streetNumber} {property.street}, {property.suburb}
+                <br />
                 {property.city}
               </p>
               <p
@@ -139,10 +140,13 @@ function ChosenPropertyListing() {
                       Property features
                     </h1>
                     <ul style={{}}>
-                      <li>item</li>
-                      <li>item</li>
-                      <li>item</li>
-                      <li>item</li>
+                      {property.propertyFeatures
+                        .split(",")
+                        .map((item, index) => (
+                          <li key={`property features: ${index}`}>
+                            {item.trim()}
+                          </li>
+                        ))}
                     </ul>
                   </div>
                   <div>
@@ -156,10 +160,13 @@ function ChosenPropertyListing() {
                       Additional information
                     </h1>
                     <ul style={{ marginBottom: "40px" }}>
-                      <li>item</li>
-                      <li>item</li>
-                      <li>item</li>
-                      <li>item</li>
+                      {property.additionalInformation
+                        .split(",")
+                        .map((item, index) => (
+                          <li key={`additonal information: ${index}`}>
+                            {item.trim()}
+                          </li>
+                        ))}
                     </ul>
                   </div>
                 </>
