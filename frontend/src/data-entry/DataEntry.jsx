@@ -22,6 +22,8 @@ function DataEntry() {
       bedrooms: document.getElementById("bedrooms"),
       bathrooms: document.getElementById("bathrooms"),
       carparks: document.getElementById("carparks"),
+      propertyFeatures: document.getElementById("propertyFeatures"),
+      additionalInformation: document.getElementById("additionalInformation"),
       petsAllowed: document.getElementById("petsAllowed"),
       country: document.getElementById("country"),
       city: document.getElementById("city"),
@@ -42,6 +44,8 @@ function DataEntry() {
       formData.append("bedrooms", listingDetails.bedrooms.value);
       formData.append("bathrooms", listingDetails.bathrooms.value);
       formData.append("carparks", listingDetails.carparks.value);
+      formData.append("propertyFeatures", listingDetails.propertyFeatures.value);
+      formData.append("additionalInformation", listingDetails.additionalInformation.value);
       formData.append("petsAllowed", listingDetails.petsAllowed.value);
       formData.append("country", listingDetails.country.value);
       formData.append("city", listingDetails.city.value);
@@ -206,13 +210,13 @@ function DataEntry() {
   return (
     <>
       {/* Upload document form */}
-      <h1>Upload document to the database</h1>
+      <h1>Upload rental listings to the database</h1>
       <form onSubmit={makeHttpRequest}>
         <label htmlFor="listingTitle">Listing title: </label>
-        <input type="text" id="listingTitle" name="listingTitle" />
+        <input type="text" id="listingTitle" name="listingTitle" style={{width: "400px"}} />
         <br />
         <label htmlFor="listingDescription">Listing Description: </label>
-        <input type="text" id="listingDescription" name="listingDescription" />
+        <input type="text" id="listingDescription" name="listingDescription" style={{width: "1000px", height: "400px"}}/>
         <br />
         <label htmlFor="propertyType">Property Type: </label>
         <select id="propertyType" name="propertyType">
@@ -231,6 +235,12 @@ function DataEntry() {
         <br />
         <label htmlFor="carparks">Number of carparks: </label>
         <input type="Number" id="carparks" name="carparks" />
+        <br />
+        <label htmlFor="propertyFeatures">Property features: </label>
+        <input type="text" id="propertyFeatures" name="propertyFeatures" placeholder="Feature 1, Feature 2, Feature 3, Feature 4" style={{width: "1400px"}}/>
+        <br />
+        <label htmlFor="additionalInformation">Additional information: </label>
+        <input type="text" id="additionalInformation" name="additionalInformation" placeholder="Additional info 1, Additional info 2, Additional info 3, Additional info 4" style={{width: "1400px"}}/>
         <br />
         <label htmlFor="petsAllowed">Pets allowed?: </label>
         <select id="petsAllowed" name="petsAllowed">
@@ -290,9 +300,9 @@ function DataEntry() {
       {successMessage && <p>{successMessage}</p>}
 
       {/* Retrieve documents form */}
-      <h1>Retrieve documents from the database</h1>
+      <h1>Retrieve rental listings from the database</h1>
       <form onSubmit={retrieveDocumentsFromDB}>
-        <button>Retrieve documents from database</button>
+        <button>Retrieve listings from database</button>
       </form>
 
       {/* Display retrieved documents and checkboxes */}
@@ -319,6 +329,10 @@ function DataEntry() {
                     <b>Bathrooms:</b> {JSON.stringify(document.bathrooms)}
                     <br />
                     <b>Carparks:</b> {JSON.stringify(document.carparks)}
+                    <br />
+                    <b>Property features:</b> {JSON.stringify(document.propertyFeatures)}
+                    <br />
+                    <b>Additional Information:</b> {JSON.stringify(document.additionalInformation)}
                     <br />
                     <b>Pets allowed:</b> {JSON.stringify(document.petsAllowed)}
                     <br />
