@@ -203,7 +203,14 @@ function ChosenPropertyListing() {
                   marginTop: "10px",
                 }}
               >
-                {property.pricePerWeek}
+                {
+                  property.pricePerWeek
+                    .toLocaleString("en-NZ", {
+                      style: "currency",
+                      currency: "NZD",
+                    })
+                    .split(".")[0]
+                }
               </p>
               <h1 style={{ color: "rgb(231,52,54)", marginTop: "20px" }}>
                 {property.listingTitle}
