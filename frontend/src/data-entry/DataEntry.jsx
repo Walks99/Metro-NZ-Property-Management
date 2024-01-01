@@ -175,19 +175,19 @@ function DataEntry() {
   };
 
   // ---------------------------------- FUNCTION FOR RETRIEVING IMAGE PATH FROM DATABASE --------------------------------------
-  const displayImage = () => {
-    console.log("displayImage function hit");
-     try {
-      fetch("http://localhost:4000/api/getImagePath")
-      .then(response => response.json())
-      .then(data => {
-        setImagePath(data.imagePath)
-      })
+  // const displayImage = () => {
+  //   console.log("displayImage function hit");
+  //    try {
+  //     fetch("http://localhost:4000/api/getImagePath")
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setImagePath(data.imagePath)
+  //     })
       
-     } catch (error) {
-      console.error("Frontend Error - displayImage function:", error.message);
-     }
-    }
+  //    } catch (error) {
+  //     console.error("Frontend Error - displayImage function:", error.message);
+  //    }
+  //   }
 
     // const deleteImage = () => {
     //   console.log("deleteImage function hit");
@@ -392,9 +392,9 @@ function DataEntry() {
       )}
 
       {/* Display image */}
-      <button onClick={displayImage}>Display image</button>
+      {/* <button onClick={displayImage}>Display image</button> */}
       {/* <button onClick={deleteImage}>Delete image</button> */}
-      {imagePath && <img src={`http://localhost:4000${imagePath}`} alt="Uploaded" />}
+      {/* {imagePath && <img src={`http://localhost:4000${imagePath}`} alt="Uploaded" />} */}
       {/* {imageDeletedMessage && <p>{imageDeletedMessage}</p>} */}
       </>
   );
