@@ -174,7 +174,7 @@ app.delete("/api/deletedocuments/:id", async (req, res) => {
   }
 });
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// --------------------------------- ENDPOINT - RETRIEVE PROPERTIES FROM DATABASE ------------------------------------
+// ---------------------- ENDPOINT - RETRIEVE A SPECIFIC PROPERTY LISTING FROM DATABASE ------------------------------
 app.get("/api/retrieveproperties/:id", async (req, res) => {
   const propertyId = req.params.id;
   try {
