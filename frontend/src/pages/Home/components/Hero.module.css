@@ -7,6 +7,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 852px;
+    margin: 0px;
 }
 
 #heroContent {
@@ -15,6 +16,7 @@
     justify-content: center;
     grid-column: 1/2;
     padding: 32px;
+    margin: 0px;
 }
 
 #heroContent > h2 {
@@ -31,8 +33,9 @@
 #buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 24px;
-    padding-top: 32px;
+    /* column-gap: 14px; */
+    /* margin-top: 320px; */
+    margin: 0px;
 }
 
 @media screen and (max-width: 500px) {

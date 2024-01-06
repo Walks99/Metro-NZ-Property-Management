@@ -19,7 +19,6 @@ export default function Home() {
             <VideoSection></VideoSection>
             <ButtonsSection></ButtonsSection>
             <Reviews></Reviews>
-
             <Footer></Footer>
         </div>
     )

@@ -16,8 +16,8 @@ export default function Hero() {
                 <div id={styles['buttons']}>
                     {/* GRID THIS LATER ON TO ADD THE 26PX GAP WITHOUT RUINING LAYOUT */}
 
-                    <SecondaryButton displayText="Property Management" width={"300px"} height={"50px"}></SecondaryButton>
-                    <NavLink to="/propertyListing" style={{ textDecoration:'none' }}><PrimaryButton displayText="Find a Rental" width={"300px"} height={"50px"}></PrimaryButton></NavLink>
+                    <SecondaryButton displayText="Property Management" width={"90%"} height={"50px%"} marginTop={"20px"}></SecondaryButton>
+                    <NavLink to="/propertyListing" style={{ textDecoration:'none'}}><PrimaryButton displayText="Find a Rental" width={"90%"} height={"50px"} marginTop={"20px"}></PrimaryButton></NavLink>
 
                 </div>
             </div>

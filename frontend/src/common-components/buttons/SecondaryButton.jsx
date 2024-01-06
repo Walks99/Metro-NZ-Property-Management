@@ -23,6 +23,7 @@ export default function SecondaryButton(props) {
         height: `${props.height}`,
         marginTop: `${props.marginTop}`,
         marginBottom: `${props.marginBottom}`,
+        marginRight: `${props.marginRight}`,
       }}
       onClick={handleClick}
     >
