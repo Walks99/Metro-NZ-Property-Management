@@ -7,7 +7,7 @@ function DataEntry() {
   const [retrievedDocuments, setRetrievedDocuments] = useState(null);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
   const [images, setImages] = useState();
-  const [imagePath, setImagePath] = useState('');
+  // const [imagePath, setImagePath] = useState('');
   // const [imageDeletedMessage, setImageDeletedMessage] = useState('');
 
   // ------------------------------------- FUNCTION FOR UPLOADING DOCUMENTS TO DATABASE -------------------------------------
@@ -213,10 +213,10 @@ function DataEntry() {
       <h1>Upload rental listings to the database</h1>
       <form onSubmit={makeHttpRequest}>
         <label htmlFor="listingTitle">Listing title: </label>
-        <input type="text" id="listingTitle" name="listingTitle" style={{width: "400px"}} />
+        <input type="text" id="listingTitle" name="listingTitle" style={{width: "400px", border: "solid 1px"}} />
         <br />
         <label htmlFor="listingDescription">Listing Description: </label>
-        <input type="text" id="listingDescription" name="listingDescription" style={{width: "1000px", height: "400px"}}/>
+        <input type="text" id="listingDescription" name="listingDescription" style={{width: "1000px", height: "400px", border: "solid 1px"}}/>
         <br />
         <label htmlFor="propertyType">Property Type: </label>
         <select id="propertyType" name="propertyType">
@@ -228,19 +228,19 @@ function DataEntry() {
         </select>
         <br />
         <label htmlFor="bedrooms">Number of bedrooms: </label>
-        <input type="Number" id="bedrooms" name="bedrooms" />
+        <input type="Number" id="bedrooms" name="bedrooms" style={{border: "solid 1px"}}/>
         <br />
         <label htmlFor="bathrooms">Number of bathrooms: </label>
-        <input type="Number" id="bathrooms" name="bathrooms" />
+        <input type="Number" id="bathrooms" name="bathrooms" style={{border: "solid 1px"}}/>
         <br />
         <label htmlFor="carparks">Number of carparks: </label>
-        <input type="Number" id="carparks" name="carparks" />
+        <input type="Number" id="carparks" name="carparks" style={{border: "solid 1px"}}/>
         <br />
         <label htmlFor="propertyFeatures">Property features: </label>
-        <input type="text" id="propertyFeatures" name="propertyFeatures" placeholder="Feature 1, Feature 2, Feature 3, Feature 4" style={{width: "1400px"}}/>
+        <input type="text" id="propertyFeatures" name="propertyFeatures" placeholder="Feature 1, Feature 2, Feature 3, Feature 4" style={{width: "1400px", border: "solid 1px"}}/>
         <br />
         <label htmlFor="additionalInformation">Additional information: </label>
-        <input type="text" id="additionalInformation" name="additionalInformation" placeholder="Additional info 1, Additional info 2, Additional info 3, Additional info 4" style={{width: "1400px"}}/>
+        <input type="text" id="additionalInformation" name="additionalInformation" placeholder="Additional info 1, Additional info 2, Additional info 3, Additional info 4" style={{width: "1400px", border: "solid 1px"}}/>
         <br />
         <label htmlFor="petsAllowed">Pets allowed?: </label>
         <select id="petsAllowed" name="petsAllowed">
@@ -278,16 +278,16 @@ function DataEntry() {
         </select>
         <br />
         <label htmlFor="suburb">Suburb: </label>
-        <input type="text" id="suburb" name="suburb" />
+        <input type="text" id="suburb" name="suburb" style={{border: "solid 1px"}}/>
         <br />
         <label htmlFor="street">Street: </label>
-        <input type="text" id="street" name="street" />
+        <input type="text" id="street" name="street" style={{border: "solid 1px"}}/>
         <br />
         <label htmlFor="streetNumber">Street Number: </label>
-        <input type="Number" id="streetNumber" name="streetNumber" />
+        <input type="Number" id="streetNumber" name="streetNumber" style={{border: "solid 1px"}}/>
         <br />
         <label htmlFor="pricePerWeek">Price (per week): </label>
-        <input type="Number" id="pricePerWeek" name="pricePerWeek" />
+        <input type="Number" id="pricePerWeek" name="pricePerWeek" style={{border: "solid 1px"}}/>
         <br />
         {/* Upload multiple images */}
         <label htmlFor="image">Choose images: </label>
