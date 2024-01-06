@@ -241,7 +241,7 @@ function ChosenPropertyListing() {
                     </h1>
                     <ul style={{}}>
                       {property.propertyFeatures
-                        .split(",")
+                        .split(";")
                         .map((item, index) => (
                           <li key={`property features: ${index}`}>
                             {item.trim()}
@@ -261,7 +261,7 @@ function ChosenPropertyListing() {
                     </h1>
                     <ul style={{ marginBottom: "40px" }}>
                       {property.additionalInformation
-                        .split(",")
+                        .split(";")
                         .map((item, index) => (
                           <li key={`additonal information: ${index}`}>
                             {item.trim()}
