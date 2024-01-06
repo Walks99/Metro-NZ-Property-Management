@@ -33,6 +33,10 @@
   justify-content: flex-start;
 }
 
+.bedBathShowCarPetsIcons {
+  margin: 0 6px 0 6px;
+}
+
 .details {
   text-align: left;
 }

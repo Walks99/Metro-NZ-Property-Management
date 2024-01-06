@@ -1,12 +1,28 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Properties.module.css";
+// ICON IMPORTS FOR BED, BATH, CAR, PETS
+import CarDefault from "../../../assets/icons/CarDefault.png";
+import oneCar from "../../../assets/icons/1-Car.png";
+import twoCar from "../../../assets/icons/2-Cars.png";
+import threeCar from "../../../assets/icons/3-Cars.png";
+import BathroomDefault from "../../../assets/icons/BathroomDefault.png";
+import oneBathroom from "../../../assets/icons/1-Bathroom.png";
+import twoBathroom from "../../../assets/icons/2-Bathroom.png";
+import threeBathroom from "../../../assets/icons/3-Bathroom.png";
+import BedroomDefault from "../../../assets/icons/BedroomDefault.png";
+import oneBedroom from "../../../assets/icons/1-Bedroom.png";
+import twoBedroom from "../../../assets/icons/2-Bedroom.png";
+import threeBedroom from "../../../assets/icons/3-Bedroom.png";
+import fourBedroom from "../../../assets/icons/4-Bedroom.png";
+import PetsDefault from "../../../assets/icons/PetsDefault.png";
+import PetsAllowed from "../../../assets/icons/PetsAllowed.png";
 
 const Properties = () => {
   const [retrievedDocuments, setRetrievedDocuments] = useState([]);
 
   const retrieveDocumentsFromDB = async () => {
     try {
-      // Fetch the documents from the server endpoint
+      // Fetch the documents from the server endpoins
       const response = await fetch(
         "http://localhost:4000/api/retrievedocument"
       );
@@ -36,14 +52,25 @@ const Properties = () => {
             <div>
               {" "}
               <img
-                src="./images/3-amano-avenue-epsom-auckland/2081897497.jpg"
+                // src="./images/3-amano-avenue-epsom-auckland/2081897497.jpg"
+                src={`http://localhost:4000${document.images[0].path}`}
                 alt=""
                 className={styles.propertyImage}
               />
               <h2>{document.listingTitle}</h2>
             </div>
 
-            <p className={styles.priceperWeek}>${document.pricePerWeek}/week</p>
+            {/* <p className={styles.priceperWeek}>${document.pricePerWeek}/week</p> */}
+            <p className={styles.priceperWeek}>
+              {
+                document.pricePerWeek
+                  .toLocaleString("en-NZ", {
+                    style: "currency",
+                    currency: "NZD",
+                  })
+                  .split(".")[0]
+              }
+            </p>
             <p className={styles.address}>
               {document.streetNumber} {document.street} {document.suburb},{" "}
               {document.city}
@@ -51,7 +78,7 @@ const Properties = () => {
 
             <div className={styles.iconsAndViewContainer}>
               <div className={styles.iconsContainer}>
-                <svg
+                {/* <svg
                   width="40"
                   height="40"
                   viewBox="0 0 40 40"
@@ -112,7 +139,110 @@ const Properties = () => {
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
-                </svg>
+                </svg> */}
+
+                {/* --- CARPARKS ICON --- */}
+                {document.carparks === 1 ? (
+                  <img
+                    src={oneCar}
+                    alt="Car icon"
+                    className={styles.bedBathShowCarPetsIcons}
+                  />
+                ) : document.carparks === 2 ? (
+                  <img
+                    src={twoCar}
+                    alt="Car icon"
+                    className={styles.bedBathShowCarPetsIcons}
+                  />
+                ) : document.carparks === 3 ? (
+                  <img
+                    src={threeCar}
+                    alt="Car icon"
+                    className={styles.bedBathShowCarPetsIcons}
+                  />
+                ) : (
+                  <img
+                    src={CarDefault}
+                    alt="Car icon"
+                    className={styles.bedBathShowCarPetsIcons}
+                  />
+                )}
+                {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+                                  {/* --- BEDROOMS ICON --- */}
+                                  {document.bedrooms === 1 ? (
+                    <img
+                      src={oneBedroom}
+                      alt="Bedrooms icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  ) : document.bedrooms === 2 ? (
+                    <img
+                      src={twoBedroom}
+                      alt="Bedrooms icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  ) : document.bedrooms === 3 ? (
+                    <img
+                      src={threeBedroom}
+                      alt="Bedrooms icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  ) : document.bedrooms === 4 ? (
+                    <img
+                      src={fourBedroom}
+                      alt="Bedrooms icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  ) : (
+                    <img
+                      src={BedroomDefault}
+                      alt="Bedrooms icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  )}
+                  {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+                  {/* --- BATHROOMS ICON ---*/}
+                  {document.bathrooms === 1 ? (
+                    <img
+                      src={oneBathroom}
+                      alt="Bathrooms icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  ) : document.bathrooms === 2 ? (
+                    <img
+                      src={twoBathroom}
+                      alt="Bathrooms icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  ) : document.bathrooms === 3 ? (
+                    <img
+                      src={threeBathroom}
+                      alt="Bathrooms icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  ) : (
+                    <img
+                      src={BathroomDefault}
+                      alt="Bathrooms icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  )}
+                  {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+                  {/* --- PET'S ALLOWED ICON ---*/}
+                  {document.petsAllowed === true ? (
+                    <img
+                      src={PetsAllowed}
+                      alt="Pets icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  ) : (
+                    <img
+                      src={PetsDefault}
+                      alt="Pets icon"
+                      className={styles.bedBathShowCarPetsIcons}
+                    />
+                  )}
+                  {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
               </div>
               <button className={styles.viewButton}>VIEW</button>
             </div>
