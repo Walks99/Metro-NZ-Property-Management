@@ -1,8 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .filterButtons {
   display: flex;
-  width: 950px;
+  /* width: 950px; */
+  width: 60%;
   justify-content: space-evenly;
   margin-top: 5px;
+}
+
+.searchAndFilterAndFilterTextsOptions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 40px 0;
 }
 
 .PropertyListingContainer {
@@ -11,7 +25,6 @@
 }
 
 .mainSection {
-  margin: 0 20px 0 20px;
   display: flex;
   flex-direction: column;
   width: 100%;

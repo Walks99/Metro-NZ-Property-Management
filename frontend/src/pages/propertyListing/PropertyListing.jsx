@@ -28,11 +28,13 @@ export default function PropertyListing() {
     <div className={styles.PropertyListingContainer}>
       <Navbar></Navbar>
       <div className={styles.mainSection}>
-        <SearchAndFilter className={styles.SearchComponent} />
-        <div className={styles.filterButtons}>
-          {filterTexts.map((options, index) => (
-            <Dropdown key={index} options={options} />
-          ))}
+          <div className={styles.searchAndFilterAndFilterTextsOptions}>
+            <SearchAndFilter className={styles.SearchComponent} />
+            <div className={styles.filterButtons}>
+              {filterTexts.map((options, index) => (
+                <Dropdown key={index} options={options} />
+              ))}
+            </div>
         </div>
         <Properties className={styles.properties}></Properties>
       </div>

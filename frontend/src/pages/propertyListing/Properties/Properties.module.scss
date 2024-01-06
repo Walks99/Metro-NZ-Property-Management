@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .propertyContainer {
   height: 650px;
   width: 402px;
@@ -35,7 +41,7 @@
 }
 
 .propertiesContainer {
-  width: 100vw;
+  width: 100%;
   display: grid;
   grid-template-columns: 402px 402px 402px;
   justify-content: space-around;
