@@ -16,29 +16,32 @@ function Footer() {
       className={Styles.footerContainer}
       style={{ height: location.pathname === "/" ? "220px" : null }}
     >
+      {/* --------------------- @@@ TOP FOOTER SECTION @@@ ---------------------- */}
       {location.pathname !== "/" && (
-        <topfootersection className={Styles.topFooterSection}>
+        <div className={Styles.topFooterSection}>
           <button
             className={Styles.BackToPreviousPageButton}
             onClick={() => navigate(-1)}
           >
             Back
           </button>
-        </topfootersection>
+        </div>
       )}
-      <middlefootersection
+      {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ @@@ END - TOP FOOTER SECTION @@@ */}
+      {/* ------------------- @@@ MIDDLE FOOTER SECTION @@@ -------------------- */}
+      <div
         className={Styles.middleFooterContainer}
         style={{ height: location.pathname === "/" ? "80%" : null }}
       >
-        {/* --------------------------------   TITLE OF FOOTER   ------------------------------------- */}
-        <footertitle className={Styles.footerTitleContainer}>
+        {/* -------------------   Title of footer   ---------------------------- */}
+        <div className={Styles.footerTitleContainer}>
           <h2>Quick Links</h2>
           <h2>Follow Us</h2>
-        </footertitle>
-        {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
-        {/* -----------------------   QUICKS LINKS AND ICONS CONTAINER   ----------------------------- */}
-        <quicklinksandicons className={Styles.quickLinksAndIconsContainer}>
-          <quicklinks className={Styles.quickLinks}>
+        </div>
+        {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Title of footer */}
+        {/* ---------------   Quick links and icons container   --------------- */}
+        <div className={Styles.quickLinksAndIconsContainer}>
+          <div className={Styles.quickLinks}>
             <NavLink to="/">
               <span>Home</span>
             </NavLink>
@@ -66,8 +69,8 @@ function Footer() {
             <NavLink to="/dispute-process">
               <span>Dispute Process</span>
             </NavLink>
-          </quicklinks>
-          <icons className={Styles.icons}>
+          </div>
+          <div className={Styles.icons}>
             <a
               href="https://www.instagram.com/metronzproperty"
               target="_blank"
@@ -96,20 +99,23 @@ function Footer() {
             >
               <img src={LinkedinIcon} alt="LinkedIn icon" />
             </a>
-          </icons>
-        </quicklinksandicons>
-        {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
-      </middlefootersection>
-      <bottomfootersection
+          </div>
+        </div>
+        {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Quick links and icons container */}
+      </div>
+      {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ @@@ END - MIDDLE FOOTER SECTION @@@ */}
+      {/* --------------------- @@@ BOTTOM FOOTER SECTION @@@ ------------------ */}
+      <div
         className={Styles.bottomFooterContainer}
         style={{ height: location.pathname === "/" ? "20%" : null }}
       >
-        {/* -------------------------------   COPY RIGHT NOTICE   ------------------------------------ */}
-        <copyrightnotice className={Styles.copyRightNoticeContainer}>
+        {/* ---------------------   Copy right notice   ----------------------- */}
+        <div className={Styles.copyRightNoticeContainer}>
           <p>@Metro NZ Property Management</p>
-        </copyrightnotice>
-        {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
-      </bottomfootersection>
+        </div>
+        {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Copy right notice */}
+      </div>
+      {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^ @@@ END - BOTTOM FOOTER SECTION @@@ ^^^^^^^^^^^^^^^^^^^^^^^^^ */}
     </div>
   );
 }

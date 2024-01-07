@@ -4,6 +4,7 @@ import styles from "./filter.module.css";
 const CustomDropdown = ({ options }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(options[0]);
+  console.log(selectedValue)
   const restOptions = options.slice(1);
 
   const handleToggleDropdown = () => {
