@@ -17,7 +17,8 @@ function Navbar() {
   return (
     <div className={Styles.navBarContainer}>
       <img src={CompanyLogo} alt='Company logo' style={{width: "240px", height: "auto"}}/>
-      <navbarlinks className={Styles.navLinkContainer}>
+      {/* ------------- @@@ NAV BAR LINKS @@@ -------------- */}
+      <div className={Styles.navLinkContainer}>
         <NavLink to="/services"><span>Services</span></NavLink>
         <NavLink to="/about"><span>About</span></NavLink>
         <NavLink to="/news"><span>News</span></NavLink>
@@ -48,7 +49,8 @@ function Navbar() {
               onClick={toggleDropdown}
               />
         )}
-      </navbarlinks>
+      </div>
+      {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ @@@ END - NAV BAR LINKS @@@ */}
     </div>
   );
 }
