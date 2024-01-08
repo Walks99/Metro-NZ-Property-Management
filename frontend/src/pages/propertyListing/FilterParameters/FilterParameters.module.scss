@@ -1,0 +1,12 @@
+.filterParametersContainer {
+
+    .rentPerWeekContainer {
+        display: flex;
+        flex-direction: column;
+
+        .priceRangeOptionsContainer {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}

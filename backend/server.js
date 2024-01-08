@@ -195,15 +195,32 @@ app.get("/api/retrieveproperties/:id", async (req, res) => {
   }
 });
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// ---------------------- ENDPOINT - RETRIEVE PROPERTIES WITHIN A PRICE RANGE ------------------------------
+app.get('/api/searchparameters', async (req, res) => {
+  const start = Number(req.query.start);
+  const end = Number(req.query.end);
+
+  try {
+    const documents = await mongoose.connection
+    .collection('Listings')
+    .find({
+      pricePerWeek: {
+        $gte: start,
+        $lte: end
+      }
+    })
+    .toArray();
+
+    console.log('Price range documents:', documents);
+    res.json(documents);
+  } catch (error) {
+    console.error("Backend Error:", error.message);
+    res.status(500).send('Error occurred while fetching data');
+  }
+});
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // ------------------------------------------------ SERVER LISTENING -------------------------------------------------
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
-  // console.log(`GET root endpoint: http://localhost:${PORT}/`);
-  // console.log(
-  //   `POST document endpoint: http://localhost:${PORT}/api/senddocument`
-  // );
-  // console.log(
-  //   `GET document endpoint: http://localhost:${PORT}/api/retrievedocument`
-  // );
 });
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

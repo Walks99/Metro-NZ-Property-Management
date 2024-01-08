@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Properties.module.scss";
-// ICON IMPORTS FOR BED, BATH, CAR, PETS
 import CarDefault from "../../../assets/icons/CarDefault.png";
 import oneCar from "../../../assets/icons/1-Car.png";
 import twoCar from "../../../assets/icons/2-Cars.png";
@@ -18,12 +17,13 @@ import fourBedroom from "../../../assets/icons/4-Bedroom.png";
 import PetsDefault from "../../../assets/icons/PetsDefault.png";
 import PetsAllowed from "../../../assets/icons/PetsAllowed.png";
 
-const Properties = () => {
+const Properties = ({selectedStartOfPriceRange, selectedEndOfPriceRange}) => {
+
+  // ----------- Retrieve Documents from database on frist render -------------
   const [retrievedDocuments, setRetrievedDocuments] = useState([]);
 
   const retrieveDocumentsFromDB = async () => {
     try {
-      // Fetch the documents from the server endpoins
       const response = await fetch(
         "http://localhost:4000/api/retrievedocument"
       );
@@ -31,7 +31,7 @@ const Properties = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        setRetrievedDocuments(data); // Set the retrieved documents in the state
+        setRetrievedDocuments(data); 
       } else {
         console.error("Frontend:", response.statusText);
       }
@@ -41,9 +41,34 @@ const Properties = () => {
   };
 
   useEffect(() => {
-    // Call the function when the component is mounted
     retrieveDocumentsFromDB();
-  }, []); // Empty dependency array means this effect runs once after the first render
+  }, []); 
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Retrieve Documents from database on frist render
+  // ----------- Retrieve properties from DB within price range ------------
+  useEffect(() => {
+    if (selectedStartOfPriceRange && selectedEndOfPriceRange) {
+      const fetchPropertiesWithinPriceRange = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:4000/api/searchparameters/?start=${selectedStartOfPriceRange}&end=${selectedEndOfPriceRange}`
+          );
+    
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            setRetrievedDocuments(data);
+          } else {
+            console.error("Frontend:", response.statusText);
+          }
+        } catch (error) {
+          console.error("Frontend Error:", error.message);
+        }
+      };
+
+      fetchPropertiesWithinPriceRange();
+    }
+  }, [selectedStartOfPriceRange, selectedEndOfPriceRange]);
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Retrieve properties from DB within price range
 
   return (
     <div className={styles.propertiesContainer}>
@@ -53,7 +78,6 @@ const Properties = () => {
             <div>
               {" "}
               <img
-                // src="./images/3-amano-avenue-epsom-auckland/2081897497.jpg"
                 src={`http://localhost:4000${document.images[0].path}`}
                 alt=""
                 className={styles.propertyImage}
