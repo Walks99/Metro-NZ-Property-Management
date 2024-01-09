@@ -14,6 +14,11 @@ export default function PropertyListing() {
   const [selectedNumberOfBedrooms, setSelectedNumberOfBedrooms] = useState(false);
   // Number of bathrooms state variables
   const [selectedNumberOfBathrooms, setSelectedNumberOfBathrooms] = useState(false);
+  // Number of carparks
+  const [selectedNumberOfCarparks, setSelectedNumberOfCarparks] = useState(false);
+  // Pet friendly
+  const [selectedPetFriendly, setSelectedPetFriendly] = useState(false);
+
 
   return (
     <div className={styles.PropertyListingContainer}>
@@ -32,6 +37,12 @@ export default function PropertyListing() {
             // Number of bathrooms props
             selectedNumberOfBathrooms={selectedNumberOfBathrooms}
             setSelectedNumberOfBathrooms={setSelectedNumberOfBathrooms}
+            // Number of carparks props
+            selectedNumberOfCarparks={selectedNumberOfCarparks}
+            setSelectedNumberOfCarparks={setSelectedNumberOfCarparks}
+            // Pet friendly props
+            selectedPetFriendly={selectedPetFriendly}
+            setSelectedPetFriendly={setSelectedPetFriendly}
           />
         </div>
         <Properties
@@ -43,6 +54,10 @@ export default function PropertyListing() {
           selectedNumberOfBedrooms={selectedNumberOfBedrooms}
           // Number of bathrooms props
           selectedNumberOfBathrooms={selectedNumberOfBathrooms}
+          // Number of carparks props
+          selectedNumberOfCarparks={selectedNumberOfCarparks}
+          // Pet friendly props
+          selectedPetFriendly={selectedPetFriendly}
         ></Properties>
       </div>
       <Footer></Footer>

@@ -1,4 +1,5 @@
 import Styles from "./FilterParameters.module.scss";
+import React from "react";
 
 function FilterParameters({
   // Price range props
@@ -12,6 +13,12 @@ function FilterParameters({
   // Number of bathrooms props
   selectedNumberOfBathrooms,
   setSelectedNumberOfBathrooms,
+  // Number of carparks props
+  selectedNumberOfCarparks,
+  setSelectedNumberOfCarparks,
+  // Pet friendly props
+  selectedPetFriendly,
+  setSelectedPetFriendly,
 
 }) {
   // ------------- Price range arrays -------------
@@ -30,9 +37,17 @@ function FilterParameters({
   // ------------- Number of bedrooms array -------------
   const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Number of bedrooms array
-  // ------------- Number of bathrooms array -------------\
+  // ------------- Number of bathrooms array -------------
   const numberOfBathrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Number of bathrooms array
+  // ------------- Number of carparks array -------------
+  const numberOfCarparks = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Number of carparks array
+  // ------------- Pet friendly array -------------
+  // const petFriendly = ["Yes", "No"]
+  const petFriendlyOptions = ["Yes", "No"]
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Pet friendly array
+
   // ------- Starting and ending price range functions --------
   const handleStartOfPriceRangeChange = (event) => {
     const selectedStartValue = event.target.value;
@@ -44,6 +59,7 @@ function FilterParameters({
     setSelectedEndOfPriceRange(selectedEndValue);
   };
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Starting and ending price range functions
+
   // ------- Number of bedrooms function --------
   const handleSelectedNumberOfBedrooms = (event) => {
     const selectedBedroomsValue = event.target.value;
@@ -56,6 +72,19 @@ function FilterParameters({
     setSelectedNumberOfBathrooms(selectedBathroomssValue);
   }
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Number of bedrooms function
+  // ------- Number of carparks function --------
+  const handleSelectedNumberOfCarparks = (event) => {
+    const selectedCarparksValue = event.target.value;
+    setSelectedNumberOfCarparks(selectedCarparksValue);
+  }
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Number of carparks function
+  // ------- Pet friendly function --------
+  const handleSelectedPetFriendly = (event) => {
+    const selectedPetFriendlyValue = event.target.value;
+    console.log(selectedPetFriendlyValue);
+    setSelectedPetFriendly(selectedPetFriendlyValue);
+  }
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Pet friendly function
 
   return (
     <div className={Styles.filterParametersContainer}>
@@ -130,6 +159,45 @@ function FilterParameters({
           </select>
       </div>
       {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End -  Number of bedrooms container*/}
+      {/* ---------------- Number of carparks container -------------------- */}
+      <div className={Styles.numberOfBedroomsContainer}>
+        <p>Carparks</p>
+        <select
+            id="numberOfCarparks"
+            name="numberOfCarparks"
+            onChange={handleSelectedNumberOfCarparks}
+            value={selectedNumberOfCarparks}
+          >
+            <option value="selectedNumberOfCarparks">Any</option>
+            {numberOfCarparks.map((numberOfCarparks) => (
+              <option key={numberOfCarparks} value={numberOfCarparks}>
+                {numberOfCarparks}
+              </option>
+            ))}
+          </select>
+      </div>
+      {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End -  Number of carparks container*/}
+      {/* ---------------- Pet Friendly container -------------------- */}
+      <div>
+      <p>Pet friendly</p>
+<select
+    id="preferredPetFriendly"
+    name="preferredPetFriendly"
+    onChange={handleSelectedPetFriendly}
+    value={JSON.stringify(selectedPetFriendly)}
+  >
+    <option value="">Any</option>
+    {petFriendlyOptions.map((option, index) => {
+      return (
+        <option key={index} value={option}>
+          {option}
+        </option>
+      );
+    })}
+  </select>
+</div>
+      {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End -  Number of carparks container*/}
+
     </div>
   );
 }

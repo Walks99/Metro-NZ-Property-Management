@@ -24,7 +24,11 @@ const Properties = ({
   // Number of bedrooms props
   selectedNumberOfBedrooms,
   // Number of bathrooms props
-  selectedNumberOfBathrooms
+  selectedNumberOfBathrooms,
+  // Number of carparks props
+  selectedNumberOfCarparks,
+  // Pet friendly props
+  selectedPetFriendly
 }) => {
 
   // ----------- Retrieve Documents from database on frist render -------------
@@ -55,10 +59,10 @@ const Properties = ({
   // ----------- Retrieve properties from DB within search parameters ------------
   useEffect(() => {
 
-      const fetchPropertiesWithinPriceRangeAndNumberOfBedrooms = async () => {
+      const fetchPropertiesWithinSearchParameters = async () => {
         try {
           const response = await fetch(
-            `http://localhost:4000/api/searchparameters/?pricestart=${selectedStartOfPriceRange}&priceend=${selectedEndOfPriceRange}&bedrooms=${selectedNumberOfBedrooms}&bathrooms=${selectedNumberOfBathrooms}`
+            `http://localhost:4000/api/searchparameters/?pricestart=${selectedStartOfPriceRange}&priceend=${selectedEndOfPriceRange}&bedrooms=${selectedNumberOfBedrooms}&bathrooms=${selectedNumberOfBathrooms}&carparks=${selectedNumberOfCarparks}&petfriendly=${selectedPetFriendly}`
           );
     
           if (response.ok) {
@@ -73,9 +77,9 @@ const Properties = ({
         }
       };
 
-      fetchPropertiesWithinPriceRangeAndNumberOfBedrooms();
+      fetchPropertiesWithinSearchParameters();
     
-  }, [selectedStartOfPriceRange, selectedEndOfPriceRange, selectedNumberOfBedrooms, selectedNumberOfBathrooms]);
+  }, [selectedStartOfPriceRange, selectedEndOfPriceRange, selectedNumberOfBedrooms, selectedNumberOfBathrooms, selectedNumberOfCarparks, selectedPetFriendly]);
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Retrieve properties from DB within search parameters
 
   return (
