@@ -83,7 +83,7 @@ app.get("/", async (req, res) => {
   res.json({ message: "It works yeah baby!", env_name: `${ENV_NAME}` });
 });
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// --------------------------- ENDPOINT - SERVE IMAGES TO THE FRONT END ----------------------------------------------
+// --------------------------- ENDPOINT - SERVE IMAGES TO THE FRONT end ----------------------------------------------
 app.get("/api/getImagePath", (req, res) => {
   const imageName = "1703712729351-1.jpg"; // Replace with the actual image name
   res.json({ imagePath: `/uploads/${imageName}` });
@@ -198,7 +198,7 @@ app.get("/api/retrieveproperties/:id", async (req, res) => {
 // // ---------------------- ENDPOINT - RETRIEVE PROPERTIES WITHIN A PRICE RANGE ------------------------------
 // app.get('/api/searchparameters', async (req, res) => {
 //   const start = Number(req.query.pricestart);
-//   const end = Number(req.query.priceend);
+//   const priceend = Number(req.query.priceend);
 
 //   try {
 //     const documents = await mongoose.connection
@@ -206,7 +206,7 @@ app.get("/api/retrieveproperties/:id", async (req, res) => {
 //     .find({
 //       pricePerWeek: {
 //         $gte: start,
-//         $lte: end
+//         $lte: priceend
 //       }
 //     })
 //     .toArray();
@@ -221,18 +221,39 @@ app.get("/api/retrieveproperties/:id", async (req, res) => {
 // // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // ---------------------- ENDPOINT - RETRIEVE PROPERTIES WITHIN A PRICE RANGE ------------------------------
 app.get('/api/searchparameters', async (req, res) => {
-  const start = Number(req.query.pricestart);
-  const end = Number(req.query.priceend);
+  const pricestart = Number(req.query.pricestart);
+  const priceend = Number(req.query.priceend);
   const bedrooms = Number(req.query.bedrooms);
+  const bathrooms = Number(req.query.bathrooms);
 
-  if ((start && end) && bedrooms) {
+  if ((pricestart && priceend) && bedrooms && bathrooms) {
     try {
       const documents = await mongoose.connection
       .collection('Listings')
       .find({
         pricePerWeek: {
-          $gte: start,
-          $lte: end
+          $gte: pricestart,
+          $lte: priceend
+        },
+        bedrooms: bedrooms,
+        bathrooms: bathrooms
+      })
+      .toArray();
+
+      console.log('Price range and bedrooms and bathrooms documents:', documents);
+      res.json(documents);
+    } catch (error) {
+      console.error("Backend Error:", error.message);
+      res.status(500).send('Error occurred while fetching data');
+    }
+  } else if ((pricestart && priceend) && bedrooms) {
+    try {
+      const documents = await mongoose.connection
+      .collection('Listings')
+      .find({
+        pricePerWeek: {
+          $gte: pricestart,
+          $lte: priceend
         },
         bedrooms: bedrooms
       })
@@ -244,14 +265,14 @@ app.get('/api/searchparameters', async (req, res) => {
       console.error("Backend Error:", error.message);
       res.status(500).send('Error occurred while fetching data');
     }
-  } else if (start && end) {
+  } else if (pricestart && priceend) {
     try {
       const documents = await mongoose.connection
       .collection('Listings')
       .find({
         pricePerWeek: {
-          $gte: start,
-          $lte: end
+          $gte: pricestart,
+          $lte: priceend
         }
       })
       .toArray();
@@ -268,7 +289,7 @@ app.get('/api/searchparameters', async (req, res) => {
 // ---------------------- ENDPOINT - RETRIEVE PROPERTIES WITHIN A PRICE RANGE & NUMBER OF BEDROOMS ------------------------------
 // app.get('/api/searchparameters', async (req, res) => {
 //   const start = Number(req.query.pricestart);
-//   const end = Number(req.query.priceend);
+//   const priceend = Number(req.query.priceend);
 //   const bedrooms = Number(req.query.bedrooms);
 
 //   try {
@@ -277,7 +298,7 @@ app.get('/api/searchparameters', async (req, res) => {
 //     .find({
 //       pricePerWeek: {
 //         $gte: start,
-//         $lte: end
+//         $lte: priceend
 //       },
 //       bedrooms: bedrooms
 //     })

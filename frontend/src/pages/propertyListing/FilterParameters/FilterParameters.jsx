@@ -1,12 +1,18 @@
 import Styles from "./FilterParameters.module.scss";
 
 function FilterParameters({
+  // Price range props
   selectedStartOfPriceRange,
   selectedEndOfPriceRange,
   setSelectedStartOfPriceRange,
   setSelectedEndOfPriceRange,
+  // Number of bedrooms props
   selectedNumberOfBedrooms,
-  setSelectedNumberOfBedrooms
+  setSelectedNumberOfBedrooms,
+  // Number of bathrooms props
+  selectedNumberOfBathrooms,
+  setSelectedNumberOfBathrooms,
+
 }) {
   // ------------- Price range arrays -------------
   const startOfPriceRange = [
@@ -24,6 +30,9 @@ function FilterParameters({
   // ------------- Number of bedrooms array -------------
   const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Number of bedrooms array
+  // ------------- Number of bathrooms array -------------\
+  const numberOfBathrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Number of bathrooms array
   // ------- Starting and ending price range functions --------
   const handleStartOfPriceRangeChange = (event) => {
     const selectedStartValue = event.target.value;
@@ -35,10 +44,18 @@ function FilterParameters({
     setSelectedEndOfPriceRange(selectedEndValue);
   };
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Starting and ending price range functions
+  // ------- Number of bedrooms function --------
   const handleSelectedNumberOfBedrooms = (event) => {
     const selectedBedroomsValue = event.target.value;
     setSelectedNumberOfBedrooms(selectedBedroomsValue);
   }
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Number of bedrooms function
+  // ------- Number of bathrooms function --------
+  const handleSelectedNumberOfBathrooms = (event) => {
+    const selectedBathroomssValue = event.target.value;
+    setSelectedNumberOfBathrooms(selectedBathroomssValue);
+  }
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Number of bedrooms function
 
   return (
     <div className={Styles.filterParametersContainer}>
@@ -77,6 +94,7 @@ function FilterParameters({
         </div>
       </div>
       {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Rent per week container */}
+      {/* ---------------- Number of bedrooms container -------------------- */}
       <div className={Styles.numberOfBedroomsContainer}>
         <p>Bedrooms</p>
         <select
@@ -93,6 +111,25 @@ function FilterParameters({
             ))}
           </select>
       </div>
+      {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End -  Number of bedrooms container*/}
+      {/* ---------------- Number of bathrooms container -------------------- */}
+      <div className={Styles.numberOfBedroomsContainer}>
+        <p>Bathrooms</p>
+        <select
+            id="numberOfBathrooms"
+            name="numberOfBathrooms"
+            onChange={handleSelectedNumberOfBathrooms}
+            value={selectedNumberOfBathrooms}
+          >
+            <option value="selectedNumberOfBathrooms">Any</option>
+            {numberOfBathrooms.map((numberOfBathrooms) => (
+              <option key={numberOfBathrooms} value={numberOfBathrooms}>
+                {numberOfBathrooms}
+              </option>
+            ))}
+          </select>
+      </div>
+      {/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End -  Number of bedrooms container*/}
     </div>
   );
 }

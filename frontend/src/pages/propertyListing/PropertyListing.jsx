@@ -12,6 +12,8 @@ export default function PropertyListing() {
   const [selectedEndOfPriceRange, setSelectedEndOfPriceRange] = useState(false);
   // Number of bedrooms state variables
   const [selectedNumberOfBedrooms, setSelectedNumberOfBedrooms] = useState(false);
+  // Number of bathrooms state variables
+  const [selectedNumberOfBathrooms, setSelectedNumberOfBathrooms] = useState(false);
 
   return (
     <div className={styles.PropertyListingContainer}>
@@ -27,6 +29,9 @@ export default function PropertyListing() {
           // Number of bedrooms props
             selectedNumberOfBedrooms={selectedNumberOfBedrooms}
             setSelectedNumberOfBedrooms={setSelectedNumberOfBedrooms}
+            // Number of bathrooms props
+            selectedNumberOfBathrooms={selectedNumberOfBathrooms}
+            setSelectedNumberOfBathrooms={setSelectedNumberOfBathrooms}
           />
         </div>
         <Properties
@@ -36,6 +41,8 @@ export default function PropertyListing() {
           selectedEndOfPriceRange={selectedEndOfPriceRange}
           // Number of bedrooms props
           selectedNumberOfBedrooms={selectedNumberOfBedrooms}
+          // Number of bathrooms props
+          selectedNumberOfBathrooms={selectedNumberOfBathrooms}
         ></Properties>
       </div>
       <Footer></Footer>

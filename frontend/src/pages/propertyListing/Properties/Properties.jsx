@@ -17,7 +17,15 @@ import fourBedroom from "../../../assets/icons/4-Bedroom.png";
 import PetsDefault from "../../../assets/icons/PetsDefault.png";
 import PetsAllowed from "../../../assets/icons/PetsAllowed.png";
 
-const Properties = ({selectedStartOfPriceRange, selectedEndOfPriceRange, selectedNumberOfBedrooms}) => {
+const Properties = ({
+  // Price range props
+  selectedStartOfPriceRange, 
+  selectedEndOfPriceRange, 
+  // Number of bedrooms props
+  selectedNumberOfBedrooms,
+  // Number of bathrooms props
+  selectedNumberOfBathrooms
+}) => {
 
   // ----------- Retrieve Documents from database on frist render -------------
   const [retrievedDocuments, setRetrievedDocuments] = useState([]);
@@ -44,35 +52,13 @@ const Properties = ({selectedStartOfPriceRange, selectedEndOfPriceRange, selecte
     retrieveDocumentsFromDB();
   }, []); 
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Retrieve Documents from database on frist render
-  // ----------- Retrieve properties from DB within price range ------------
+  // ----------- Retrieve properties from DB within search parameters ------------
   useEffect(() => {
-    if (selectedStartOfPriceRange && selectedEndOfPriceRange) {
-      const fetchPropertiesWithinPriceRange = async () => {
-        try {
-          const response = await fetch(
-            `http://localhost:4000/api/searchparameters/?pricestart=${selectedStartOfPriceRange}&priceend=${selectedEndOfPriceRange}`
-          );
-    
-          if (response.ok) {
-            const data = await response.json();
-            console.log(data);
-            setRetrievedDocuments(data);
-          } else {
-            console.error("Frontend:", response.statusText);
-          }
-        } catch (error) {
-          console.error("Frontend Error:", error.message);
-        }
-      };
 
-      fetchPropertiesWithinPriceRange();
-    }
-
-    if ((selectedStartOfPriceRange && selectedEndOfPriceRange) && selectedNumberOfBedrooms) {
       const fetchPropertiesWithinPriceRangeAndNumberOfBedrooms = async () => {
         try {
           const response = await fetch(
-            `http://localhost:4000/api/searchparameters/?pricestart=${selectedStartOfPriceRange}&priceend=${selectedEndOfPriceRange}&bedrooms=${selectedNumberOfBedrooms}`
+            `http://localhost:4000/api/searchparameters/?pricestart=${selectedStartOfPriceRange}&priceend=${selectedEndOfPriceRange}&bedrooms=${selectedNumberOfBedrooms}&bathrooms=${selectedNumberOfBathrooms}`
           );
     
           if (response.ok) {
@@ -88,9 +74,9 @@ const Properties = ({selectedStartOfPriceRange, selectedEndOfPriceRange, selecte
       };
 
       fetchPropertiesWithinPriceRangeAndNumberOfBedrooms();
-    }
-  }, [selectedStartOfPriceRange, selectedEndOfPriceRange, selectedNumberOfBedrooms]);
-  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Retrieve properties from DB within price range
+    
+  }, [selectedStartOfPriceRange, selectedEndOfPriceRange, selectedNumberOfBedrooms, selectedNumberOfBathrooms]);
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Retrieve properties from DB within search parameters
 
   return (
     <div className={styles.propertiesContainer}>
