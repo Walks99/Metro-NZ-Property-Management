@@ -226,41 +226,43 @@ app.get('/api/searchparameters', async (req, res) => {
   const bedrooms = Number(req.query.bedrooms);
   const bathrooms = Number(req.query.bathrooms);
   const carparks = Number(req.query.carparks);
-  let petsAllowed = req.query.petfriendly;
+  // let petsAllowed = req.query.petfriendly;
 
-  if ((pricestart && priceend) && bedrooms && bathrooms && carparks && petsAllowed) {
+  // if ((pricestart && priceend) && bedrooms && bathrooms && carparks && petsAllowed) {
 
-    if (req.query.petfriendly === 'Yes') {
-      petsAllowed = {'Yes': true};
-    } else if (req.query.petfriendly === 'No') {
-      petsAllowed = {'No': false};
-    } else {
-      petsAllowed = {'Any': true}; // default value
-    }
+  //   if (req.query.petfriendly === 'Yes') {
+  //     petsAllowed = {'Yes': true};
+  //   } else if (req.query.petfriendly === 'No') {
+  //     petsAllowed = {'No': false};
+  //   } else {
+  //     petsAllowed = {'Any': true}; // default value
+  //   }
     
-    try {
-      const documents = await mongoose.connection
-      .collection('Listings')
-      .find({
-        pricePerWeek: {
-          $gte: pricestart,
-          $lte: priceend
-        },
-        bedrooms: bedrooms,
-        bathrooms: bathrooms,
-        carparks: carparks,
-        petsAllowed: Object.values(petsAllowed)[1]
-      })
-      .toArray();
+  //   try {
+  //     const documents = await mongoose.connection
+  //     .collection('Listings')
+  //     .find({
+  //       pricePerWeek: {
+  //         $gte: pricestart,
+  //         $lte: priceend
+  //       },
+  //       bedrooms: bedrooms,
+  //       bathrooms: bathrooms,
+  //       carparks: carparks,
+  //       petsAllowed: Object.values(petsAllowed)[1]
+  //     })
+  //     .toArray();
   
-      console.log('Price range and bedrooms and bathrooms and carparks and pets documents:', documents);
-      res.json(documents);
-    } catch (error) {
-      console.error("Backend Error:", error.message);
-      res.status(500).send('Error occurred while fetching data');
-    }
+  //     console.log('pricestart, priceend, bedrooms, bathrooms, carparks and pets-allowed are truthy:', documents);
+  //     res.json(documents);
+  //   } catch (error) {
+  //     console.error("Backend Error:", error.message);
+  //     res.status(500).send('Error occurred while fetching data');
+  //   }
 
-  } else if ((pricestart && priceend) && bedrooms && bathrooms && carparks) {
+  // } else 
+  
+  if ((pricestart && priceend) && bedrooms && bathrooms && carparks) {
     try {
       const documents = await mongoose.connection
       .collection('Listings')
@@ -272,11 +274,10 @@ app.get('/api/searchparameters', async (req, res) => {
         bedrooms: bedrooms,
         bathrooms: bathrooms,
         carparks: carparks,
-        petsAllowed: petfriendly
       })
       .toArray();
 
-      console.log('Price range and bedrooms and bathrooms and carparks documents:', documents);
+      console.log('pricestart, priceend, bedrooms, bathrooms, carparks are truthy:', documents);
       res.json(documents);
     } catch (error) {
       console.error("Backend Error:", error.message);

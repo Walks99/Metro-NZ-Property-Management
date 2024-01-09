@@ -17,7 +17,7 @@ export default function PropertyListing() {
   // Number of carparks
   const [selectedNumberOfCarparks, setSelectedNumberOfCarparks] = useState(false);
   // Pet friendly
-  const [selectedPetFriendly, setSelectedPetFriendly] = useState(false);
+  // const [selectedPetFriendly, setSelectedPetFriendly] = useState(false);
 
 
   return (
@@ -41,8 +41,8 @@ export default function PropertyListing() {
             selectedNumberOfCarparks={selectedNumberOfCarparks}
             setSelectedNumberOfCarparks={setSelectedNumberOfCarparks}
             // Pet friendly props
-            selectedPetFriendly={selectedPetFriendly}
-            setSelectedPetFriendly={setSelectedPetFriendly}
+            // selectedPetFriendly={selectedPetFriendly}
+            // setSelectedPetFriendly={setSelectedPetFriendly}
           />
         </div>
         <Properties
@@ -57,7 +57,7 @@ export default function PropertyListing() {
           // Number of carparks props
           selectedNumberOfCarparks={selectedNumberOfCarparks}
           // Pet friendly props
-          selectedPetFriendly={selectedPetFriendly}
+          // selectedPetFriendly={selectedPetFriendly}
         ></Properties>
       </div>
       <Footer></Footer>
