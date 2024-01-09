@@ -17,7 +17,7 @@ import fourBedroom from "../../../assets/icons/4-Bedroom.png";
 import PetsDefault from "../../../assets/icons/PetsDefault.png";
 import PetsAllowed from "../../../assets/icons/PetsAllowed.png";
 
-const Properties = ({selectedStartOfPriceRange, selectedEndOfPriceRange}) => {
+const Properties = ({selectedStartOfPriceRange, selectedEndOfPriceRange, selectedNumberOfBedrooms}) => {
 
   // ----------- Retrieve Documents from database on frist render -------------
   const [retrievedDocuments, setRetrievedDocuments] = useState([]);
@@ -50,7 +50,7 @@ const Properties = ({selectedStartOfPriceRange, selectedEndOfPriceRange}) => {
       const fetchPropertiesWithinPriceRange = async () => {
         try {
           const response = await fetch(
-            `http://localhost:4000/api/searchparameters/?start=${selectedStartOfPriceRange}&end=${selectedEndOfPriceRange}`
+            `http://localhost:4000/api/searchparameters/?pricestart=${selectedStartOfPriceRange}&priceend=${selectedEndOfPriceRange}`
           );
     
           if (response.ok) {
@@ -67,7 +67,29 @@ const Properties = ({selectedStartOfPriceRange, selectedEndOfPriceRange}) => {
 
       fetchPropertiesWithinPriceRange();
     }
-  }, [selectedStartOfPriceRange, selectedEndOfPriceRange]);
+
+    if ((selectedStartOfPriceRange && selectedEndOfPriceRange) && selectedNumberOfBedrooms) {
+      const fetchPropertiesWithinPriceRangeAndNumberOfBedrooms = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:4000/api/searchparameters/?pricestart=${selectedStartOfPriceRange}&priceend=${selectedEndOfPriceRange}&bedrooms=${selectedNumberOfBedrooms}`
+          );
+    
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            setRetrievedDocuments(data);
+          } else {
+            console.error("Frontend:", response.statusText);
+          }
+        } catch (error) {
+          console.error("Frontend Error:", error.message);
+        }
+      };
+
+      fetchPropertiesWithinPriceRangeAndNumberOfBedrooms();
+    }
+  }, [selectedStartOfPriceRange, selectedEndOfPriceRange, selectedNumberOfBedrooms]);
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ End - Retrieve properties from DB within price range
 
   return (

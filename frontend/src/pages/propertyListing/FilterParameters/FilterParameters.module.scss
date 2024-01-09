@@ -1,5 +1,9 @@
 .filterParametersContainer {
 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
     .rentPerWeekContainer {
         display: flex;
         flex-direction: column;
@@ -8,5 +12,9 @@
             display: flex;
             flex-direction: row;
         }
+    }
+
+    .numberOfBedroomsContainer {
+        
     }
 }

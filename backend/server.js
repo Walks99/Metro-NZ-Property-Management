@@ -195,29 +195,101 @@ app.get("/api/retrieveproperties/:id", async (req, res) => {
   }
 });
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// // ---------------------- ENDPOINT - RETRIEVE PROPERTIES WITHIN A PRICE RANGE ------------------------------
+// app.get('/api/searchparameters', async (req, res) => {
+//   const start = Number(req.query.pricestart);
+//   const end = Number(req.query.priceend);
+
+//   try {
+//     const documents = await mongoose.connection
+//     .collection('Listings')
+//     .find({
+//       pricePerWeek: {
+//         $gte: start,
+//         $lte: end
+//       }
+//     })
+//     .toArray();
+
+//     console.log('Price range documents:', documents);
+//     res.json(documents);
+//   } catch (error) {
+//     console.error("Backend Error:", error.message);
+//     res.status(500).send('Error occurred while fetching data');
+//   }
+// });
+// // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // ---------------------- ENDPOINT - RETRIEVE PROPERTIES WITHIN A PRICE RANGE ------------------------------
 app.get('/api/searchparameters', async (req, res) => {
-  const start = Number(req.query.start);
-  const end = Number(req.query.end);
+  const start = Number(req.query.pricestart);
+  const end = Number(req.query.priceend);
+  const bedrooms = Number(req.query.bedrooms);
 
-  try {
-    const documents = await mongoose.connection
-    .collection('Listings')
-    .find({
-      pricePerWeek: {
-        $gte: start,
-        $lte: end
-      }
-    })
-    .toArray();
+  if ((start && end) && bedrooms) {
+    try {
+      const documents = await mongoose.connection
+      .collection('Listings')
+      .find({
+        pricePerWeek: {
+          $gte: start,
+          $lte: end
+        },
+        bedrooms: bedrooms
+      })
+      .toArray();
 
-    console.log('Price range documents:', documents);
-    res.json(documents);
-  } catch (error) {
-    console.error("Backend Error:", error.message);
-    res.status(500).send('Error occurred while fetching data');
+      console.log('Price range and bedrooms documents:', documents);
+      res.json(documents);
+    } catch (error) {
+      console.error("Backend Error:", error.message);
+      res.status(500).send('Error occurred while fetching data');
+    }
+  } else if (start && end) {
+    try {
+      const documents = await mongoose.connection
+      .collection('Listings')
+      .find({
+        pricePerWeek: {
+          $gte: start,
+          $lte: end
+        }
+      })
+      .toArray();
+
+      console.log('Price range documents:', documents);
+      res.json(documents);
+    } catch (error) {
+      console.error("Backend Error:", error.message);
+      res.status(500).send('Error occurred while fetching data');
+    }
   }
 });
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// ---------------------- ENDPOINT - RETRIEVE PROPERTIES WITHIN A PRICE RANGE & NUMBER OF BEDROOMS ------------------------------
+// app.get('/api/searchparameters', async (req, res) => {
+//   const start = Number(req.query.pricestart);
+//   const end = Number(req.query.priceend);
+//   const bedrooms = Number(req.query.bedrooms);
+
+//   try {
+//     const documents = await mongoose.connection
+//     .collection('Listings')
+//     .find({
+//       pricePerWeek: {
+//         $gte: start,
+//         $lte: end
+//       },
+//       bedrooms: bedrooms
+//     })
+//     .toArray();
+
+//     console.log('Price range documents:', documents);
+//     res.json(documents);
+//   } catch (error) {
+//     console.error("Backend Error:", error.message);
+//     res.status(500).send('Error occurred while fetching data');
+//   }
+// });
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // ------------------------------------------------ SERVER LISTENING -------------------------------------------------
 app.listen(PORT, () => {
